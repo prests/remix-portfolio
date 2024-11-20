@@ -1,12 +1,17 @@
 {
-  "name": "hono-remix-template",
-  "description": "My template for building a Remix application powered by Hono.",
+  "name": "remix-portfolio",
+  "description": "My web portfolio powered by Remix and Hono!",
   "private": true,
   "type": "module",
   "version": "1.0.0",
+  "homepage": "https://shaynepreston.com",
   "author": {
     "name": "Shayne Preston",
     "email": "shayne.preston@protonmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prests/remix-portfolio#readme"
   },
   "packageManager": "pnpm@8.6.3",
   "engines": {
@@ -55,8 +60,7 @@
     "postinstall:setup-playwright": "playwright install --with-deps",
     "postinstall:setup-cert": "pnpm run clean:cert && mkdirp .cert && pnpm run cert:setup-ca && pnpm run cert:setup-crt",
     "cert:setup-ca": "mkcert create-ca --key \".cert/ca.key\" --cert \".cert/ca.crt\"",
-    "_comment:@UPDATE": "swap local.example-test.com to whatever domain you will be using",
-    "cert:setup-crt": "mkcert create-cert --domains localhost,127.0.0.1,local.example-test.com --ca-key \".cert/ca.key\" --ca-cert \".cert/ca.crt\" --key \".cert/cert.key\" --cert \".cert/cert.crt\""
+    "cert:setup-crt": "mkcert create-cert --domains localhost,127.0.0.1,local.shaynepreston.com --ca-key \".cert/ca.key\" --ca-cert \".cert/ca.crt\" --key \".cert/cert.key\" --cert \".cert/cert.crt\""
   },
   "dependencies": {
     "@hono/node-server": "^1.13.5",
@@ -108,7 +112,10 @@
     "typescript",
     "ts",
     "javascript",
-    "js"
+    "js",
+    "portfolio",
+    "blog",
+    "site"
   ],
   "license": "MIT"
 }
