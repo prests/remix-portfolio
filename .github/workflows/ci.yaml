@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup-workspace.yaml
+
+  linting:
+    name: Run Linting, Formatting, and Typecheck
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Job
+        uses: ./.github/actions/setup-job
+
+      - name: Lint Check
+        shell: bash
+        run: pnpm run lint
+
+      - name: Format Check
+        shell: bash
+        run: pnpm run format:verify
+
+      - name: Typecheck
+        shell: bash
+        run: pnpm run typecheck
+
+  Tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Job
+        uses: ./.github/actions/setup-job
+
+      - name: Unit Tests
+        shell: bash
+        run: pnpm run test
