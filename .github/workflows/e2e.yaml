@@ -34,15 +34,11 @@ jobs:
           ABORT_DELAY: 5000
           APP_NAME: Example App
         run: |
+          sudo echo "127.0.0.1 local.shaynepreston.com" | sudo tee -a /etc/hosts
+          pnpm run postinstall:setup-cert
           if [ "${{ github.event_name }}" == "schedule" ]; then
-            sudo echo "127.0.0.1 local.shaynepreston.com" | sudo tee -a /etc/hosts
-            pnpm run postinstall:setup-cert
-            # ---- #
-
             pnpm run test:e2e:test
           else
-            sudo echo "127.0.0.1 local.example-test.com" | sudo tee -a /etc/hosts
-            pnpm run postinstall:setup-cert
             pnpm run test:e2e:local
           fi
 
