@@ -8,8 +8,12 @@ import CustomButton from '../components/button/CustomButton';
 import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 
 const meta: MetaFunction = () => [
-  { title: 'Remix Hono Template' },
-  { name: 'description', content: 'This is a template for setting up a Remix application powered by Hono!' },
+  { title: 'Shayne Preston' },
+  {
+    name: 'description',
+    content:
+      "Explore Shayne Preston's portfolio, showcasing innovative web development projects and insights into cutting-edge technologies. Discover my expertise in modern tech and programming.",
+  },
 ];
 
 const loader = ({ context }: LoaderFunctionArgs) => {
