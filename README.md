@@ -1,8 +1,11 @@
-# Hono Remix Template &middot; [![E2E Tests](https://github.com/prests/hono-remix-template/actions/workflows/e2e.yaml/badge.svg?branch=main&event=push)](https://github.com/prests/hono-remix-template/actions/workflows/e2e.yaml?query=branch:main+event:push) [![CI Tests](https://github.com/prests/hono-remix-template/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/prests/hono-remix-template/actions/workflows/ci.yaml?query=branch:main+event:push)
+# Remix Portfolio &middot; [![E2E Tests](https://github.com/prests/remix-portfolio/actions/workflows/e2e.yaml/badge.svg?branch=main&event=push)](https://github.com/prests/remix-portfolio/actions/workflows/e2e.yaml?query=branch:main+event:push) [![CI Tests](https://github.com/prests/hono-remix-template/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/prests/hono-remix-template/actions/workflows/ci.yaml?query=branch:main+event:push)
 
 Welcome to my portfolio built on Hono and Remix! I like to play around with new frameworks and technology and this is
 one I've been working with recently! If you like this build be sure to checkout
 [the template](https://github.com/prests/hono-remix-template) I made to make your own; or fork this one!
+
+> 📧 **Note:** If you like what you see and would like to get in contact with me please email me at
+> shayne.preston@protonmail.com
 
 ## Setup
 
