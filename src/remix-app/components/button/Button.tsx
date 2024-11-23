@@ -57,13 +57,13 @@ const styles = stylex.create({
   },
 });
 
-const CustomButton = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'fill', asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
     return <Comp ref={ref} {...stylex.props(styles.base, styles[variant])} {...props} />;
   }
 );
-CustomButton.displayName = 'Custom Button';
+Button.displayName = 'Button';
 
-export default CustomButton;
+export default Button;
 export type { ButtonProps };
