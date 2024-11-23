@@ -15,3 +15,10 @@ coverage
 
 .yalc
 yalc.lock
+
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+storybook-static

@@ -3,7 +3,7 @@ import { useLoaderData } from '@remix-run/react';
 import * as stylex from '@stylexjs/stylex';
 import { useState } from 'react';
 
-import CustomButton from '../components/button/CustomButton';
+import Button from '../components/button/Button';
 
 import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 
@@ -54,7 +54,7 @@ const RootIndexRoute = () => {
           <strong>Count:</strong> <span>{count}</span>
         </p>
 
-        <CustomButton onClick={() => setCount(val => val + 1)}>Click Me!</CustomButton>
+        <Button onClick={() => setCount(val => val + 1)}>Click Me!</Button>
       </section>
     </main>
   );
