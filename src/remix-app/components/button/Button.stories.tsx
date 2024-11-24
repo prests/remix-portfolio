@@ -4,8 +4,14 @@ import Button from 'src/remix-app/components/button/Button';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+type Story = StoryObj<typeof meta>;
+
+const Primary: Story = {
+  args: {},
+};
+
 const meta = {
-  title: 'Example/Button',
+  title: 'Button',
   component: Button,
   parameters: {
     layout: 'centered',
@@ -18,8 +24,4 @@ const meta = {
 } satisfies Meta<typeof Button>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Primary: Story = {
-  args: {},
-};
+export { Primary };
