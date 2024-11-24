@@ -59,7 +59,7 @@ const mapColorsToElements = <T extends stylex.VarGroup<{}>>(title: string, color
   );
 };
 
-const Primary: Story = {
+const Colors: Story = {
   render: (_, { globals }) => {
     const BaseColors = mapColorsToElements('Base Colors', baseColors, false);
     const GreyColors = mapColorsToElements('Grey', grey);
@@ -70,7 +70,7 @@ const Primary: Story = {
     return (
       <div
         {...stylex.props(
-          globals.backgrounds.value === '#333' ? styles.colorComponentWrapperDark : styles.colorComponentWrapperLight
+          globals.backgrounds?.value === '#333' ? styles.colorComponentWrapperDark : styles.colorComponentWrapperLight
         )}
       >
         <h1 {...stylex.props(styles.title)}>Colors</h1>
@@ -85,11 +85,11 @@ const Primary: Story = {
 };
 
 const meta: Meta = {
-  title: 'Colors',
+  title: 'Theming',
   parameters: {
     layout: 'centered',
   },
 };
 
 export default meta;
-export { Primary };
+export { Colors };
