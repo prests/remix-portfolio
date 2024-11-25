@@ -33,5 +33,36 @@
         "orderImportKind": "asc"
       }
     }]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.stories.*"],
+      "rules": {
+        "import/order": ["error", {
+          "named": true,
+          "newlines-between": "always",
+          "distinctGroup": true,
+          "warnOnUnassignedImports": true,
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "type"
+          ],
+          "pathGroups": [
+            {
+              "pattern": "@example/**",
+              "group": "internal",
+              "position": "before"
+            }
+          ],
+          "alphabetize": {
+            "orderImportKind": "asc"
+          }
+        }]
+      }
+    },
+  ]
 }

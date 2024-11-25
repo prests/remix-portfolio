@@ -27,6 +27,8 @@ interface Tokens {
   color_action_background_ghost: Color;
   color_action_background_ghost_hover: Color;
   /* ---------------------------- */
+  // Typography
+  color_text_brand: Color;
 }
 
 /**
@@ -38,4 +40,4 @@ type ThemeTokens = {
     : never;
 };
 
-export type { ThemeMode, ThemeTokens, Tokens };
+export type { Color, ThemeMode, ThemeTokens, Tokens };

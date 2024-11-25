@@ -5,7 +5,13 @@ import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import { tokens } from '../../themes/tokens.stylex';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Button styles
+   */
   variant?: keyof Omit<typeof styles, 'base'>;
+  /**
+   * Render as a child element.
+   */
   asChild?: boolean;
 }
 
