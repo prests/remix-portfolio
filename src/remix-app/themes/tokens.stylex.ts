@@ -48,4 +48,6 @@ export const tokens = stylex.defineVars<Tokens>({
     [DARK]: orangeAlpha.o300_20,
   }),
   /* ---------------------------- */
+  // Typography
+  color_text_brand: stylex.types.color({ default: orange.o700, [DARK]: orange.o300 }),
 });

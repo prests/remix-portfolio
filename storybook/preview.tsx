@@ -1,3 +1,5 @@
+import { Controls, Description, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
+
 import '../src/remix-app/main.css';
 import ThemeProvider from '../src/remix-app/themes/ThemeProvider';
 import { DARK_MODE, LIGHT_MODE } from '../src/remix-app/themes/themes.constant';
@@ -36,6 +38,19 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    docs: {
+      toc: true,
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+          <Stories />
+        </>
+      ),
     },
   },
   decorators: [

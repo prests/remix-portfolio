@@ -27,6 +27,8 @@ const darkTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   color_action_background_ghost: stylex.types.color(baseColors.transparent),
   color_action_background_ghost_hover: stylex.types.color(orangeAlpha.o300_20),
   /* ---------------------------- */
+  // Typography
+  color_text_brand: stylex.types.color(orange.o300),
 });
 
 export { darkTheme };
