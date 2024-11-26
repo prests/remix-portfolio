@@ -25,7 +25,6 @@ const loader = ({ context }: LoaderFunctionArgs) => {
 const styles = stylex.create({
   page: {
     display: 'grid',
-    height: '5000px',
   },
   section: {
     margin: '3rem auto 0',
