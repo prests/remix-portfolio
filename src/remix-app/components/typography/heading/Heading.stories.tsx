@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import Heading from 'src/remix-app/components/typography/Heading';
+import Heading from 'src/remix-app/components/typography/heading/Heading';
 import { tokens } from 'src/remix-app/themes/tokens.stylex';
 
 import type { Meta, StoryObj } from '@storybook/react';
