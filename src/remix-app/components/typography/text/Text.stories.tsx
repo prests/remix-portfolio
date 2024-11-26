@@ -1,14 +1,15 @@
 import * as stylex from '@stylexjs/stylex';
 
-import Heading from 'src/remix-app/components/typography/Heading';
 import { tokens } from 'src/remix-app/themes/tokens.stylex';
+
+import Text from './Text';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof meta>;
 
 const styles = stylex.create({
-  header: {
+  text: {
     color: tokens.color_text_brand,
   },
   alignmentDemoWrapper: {
@@ -27,15 +28,15 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: args => (
     <div>
-      <Heading {...args} size={1} />
-      <Heading {...args} size={2} />
-      <Heading {...args} size={3} />
-      <Heading {...args} size={4} />
-      <Heading {...args} size={5} />
-      <Heading {...args} size={6} />
-      <Heading {...args} size={7} />
-      <Heading {...args} size={8} />
-      <Heading {...args} size={9} />
+      <Text {...args} size={1} />
+      <Text {...args} size={2} />
+      <Text {...args} size={3} />
+      <Text {...args} size={4} />
+      <Text {...args} size={5} />
+      <Text {...args} size={6} />
+      <Text {...args} size={7} />
+      <Text {...args} size={8} />
+      <Text {...args} size={9} />
     </div>
   ),
 };
@@ -43,10 +44,10 @@ export const Sizes: Story = {
 export const Weights: Story = {
   render: args => (
     <div>
-      <Heading {...args} weight="light" />
-      <Heading {...args} weight="regular" />
-      <Heading {...args} weight="medium" />
-      <Heading {...args} weight="bold" />
+      <Text {...args} weight="light" />
+      <Text {...args} weight="regular" />
+      <Text {...args} weight="medium" />
+      <Text {...args} weight="bold" />
     </div>
   ),
 };
@@ -54,15 +55,15 @@ export const Weights: Story = {
 export const Alignment: Story = {
   render: args => (
     <div {...stylex.props(styles.alignmentDemoWrapper)}>
-      <Heading {...args} align="left">
+      <Text {...args} align="left">
         Left Align
-      </Heading>
-      <Heading {...args} align="center">
+      </Text>
+      <Text {...args} align="center">
         Center Align
-      </Heading>
-      <Heading {...args} align="right">
+      </Text>
+      <Text {...args} align="right">
         Right Align
-      </Heading>
+      </Text>
     </div>
   ),
 };
@@ -70,10 +71,10 @@ export const Alignment: Story = {
 export const Wraps: Story = {
   render: args => (
     <div {...stylex.props(styles.alignmentDemoWrapper)}>
-      <Heading {...args} wrap="wrap" />
-      <Heading {...args} wrap="nowrap" />
-      <Heading {...args} wrap="pretty" />
-      <Heading {...args} wrap="balance" />
+      <Text {...args} wrap="wrap" />
+      <Text {...args} wrap="nowrap" />
+      <Text {...args} wrap="pretty" />
+      <Text {...args} wrap="balance" />
     </div>
   ),
 };
@@ -81,20 +82,20 @@ export const Wraps: Story = {
 export const Truncate: Story = {
   render: args => (
     <div {...stylex.props(styles.alignmentDemoWrapper)}>
-      <Heading {...args} truncate={true} title={args.children?.toString()} />
+      <Text {...args} truncate={true} title={args.children?.toString()} />
     </div>
   ),
 };
 
 const meta = {
-  title: 'Typography/Heading',
-  component: Heading,
+  title: 'Typography/Text',
+  component: Text,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   args: {
-    as: 'h1',
+    as: 'p',
     asChild: false,
     children: 'The quick brown fox jumped over the lazy dog.',
     size: 6,
@@ -102,7 +103,7 @@ const meta = {
     align: 'left',
     wrap: 'balance',
     truncate: false,
-    style: styles.header,
+    style: styles.text,
   },
-} satisfies Meta<typeof Heading>;
+} satisfies Meta<typeof Text>;
 export default meta;
