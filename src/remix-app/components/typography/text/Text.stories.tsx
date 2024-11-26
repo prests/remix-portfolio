@@ -9,7 +9,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 type Story = StoryObj<typeof meta>;
 
 const styles = stylex.create({
-  header: {
+  text: {
     color: tokens.color_text_brand,
   },
   alignmentDemoWrapper: {
@@ -103,7 +103,7 @@ const meta = {
     align: 'left',
     wrap: 'balance',
     truncate: false,
-    style: styles.header,
+    style: styles.text,
   },
 } satisfies Meta<typeof Text>;
 export default meta;
