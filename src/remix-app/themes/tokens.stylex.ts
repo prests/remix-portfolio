@@ -13,7 +13,13 @@ const DARK = '@media (prefers-color-scheme: dark)';
 
 export const tokens = stylex.defineVars<Tokens>({
   // Pages
-  color_page_background: stylex.types.color({ default: blueGrey.bg50, [DARK]: blueGrey.bg700 }),
+  color_base_page_background: stylex.types.color({ default: blueGrey.bg50, [DARK]: blueGrey.bg700 }),
+  color_gradient_one_background_start: stylex.types.color({ default: orange.o100, [DARK]: orange.o600 }),
+  color_gradient_one_background_end: stylex.types.color({ default: orange.o200, [DARK]: orange.o700 }),
+  color_gradient_two_background_start: stylex.types.color({ default: orange.o100, [DARK]: orange.o600 }),
+  color_gradient_two_background_end: stylex.types.color({ default: orange.o200, [DARK]: orange.o700 }),
+  color_gradient_three_background_start: stylex.types.color({ default: blueGrey.bg100, [DARK]: blueGrey.bg600 }),
+  color_gradient_three_background_end: stylex.types.color({ default: blueGrey.bg200, [DARK]: blueGrey.bg700 }),
   /* ---------------------------- */
   // Actions
   color_action_text: stylex.types.color({ default: orange.o700, [DARK]: orange.o300 }),

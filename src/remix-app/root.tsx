@@ -1,11 +1,11 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import * as stylex from '@stylexjs/stylex';
 
+import AuroraBackground from './components/background/AuroraBackground';
 import { useNonce } from './hooks/nonce';
 import stylexStylesheet from './main.css?url';
 import ThemeProvider from './themes/ThemeProvider';
 import { LIGHT_MODE } from './themes/themes.constant';
-import { tokens } from './themes/tokens.stylex';
 
 import type { LinksFunction } from '@remix-run/node';
 
@@ -22,11 +22,6 @@ const styles = stylex.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-  },
-  outlet: {
-    height: '100%',
-    width: '100%',
-    backgroundColor: tokens.color_page_background,
   },
 });
 
@@ -46,9 +41,10 @@ const App = () => {
 
       <body {...stylex.props(styles.body)}>
         <ThemeProvider mode={theme}>
-          <main {...stylex.props(styles.outlet)}>
+          <>
+            <AuroraBackground />
             <Outlet />
-          </main>
+          </>
         </ThemeProvider>
 
         <ScrollRestoration nonce={nonce ?? undefined} />

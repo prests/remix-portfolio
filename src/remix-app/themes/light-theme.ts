@@ -7,7 +7,13 @@ import type { ThemeTokens } from './themes.types';
 
 const lightTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   // Pages
-  color_page_background: stylex.types.color(blueGrey.bg50),
+  color_base_page_background: stylex.types.color(blueGrey.bg50),
+  color_gradient_one_background_start: stylex.types.color(orange.o100),
+  color_gradient_one_background_end: stylex.types.color(orange.o200),
+  color_gradient_two_background_start: stylex.types.color(orange.o100),
+  color_gradient_two_background_end: stylex.types.color(orange.o200),
+  color_gradient_three_background_start: stylex.types.color(blueGrey.bg100),
+  color_gradient_three_background_end: stylex.types.color(blueGrey.bg200),
   /* ---------------------------- */
   // Actions
   color_action_text: stylex.types.color(orange.o700),
