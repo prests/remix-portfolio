@@ -7,7 +7,13 @@ type ThemeMode = typeof LIGHT_MODE | typeof DARK_MODE | undefined;
 
 interface Tokens {
   // Pages
-  color_page_background: Color;
+  color_base_page_background: Color;
+  color_gradient_one_background_start: Color;
+  color_gradient_one_background_end: Color;
+  color_gradient_two_background_start: Color;
+  color_gradient_two_background_end: Color;
+  color_gradient_three_background_start: Color;
+  color_gradient_three_background_end: Color;
   /* ---------------------------- */
   // Actions
   color_action_text: Color;
