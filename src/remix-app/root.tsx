@@ -2,6 +2,7 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/reac
 import * as stylex from '@stylexjs/stylex';
 
 import AuroraBackground from './components/background/AuroraBackground';
+import NavBar from './components/nav/Navbar';
 import { useNonce } from './hooks/nonce';
 import stylexStylesheet from './main.css?url';
 import ThemeProvider from './themes/ThemeProvider';
@@ -43,6 +44,7 @@ const App = () => {
         <ThemeProvider mode={theme}>
           <>
             <AuroraBackground />
+            <NavBar />
             <Outlet />
           </>
         </ThemeProvider>

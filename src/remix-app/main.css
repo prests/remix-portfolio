@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap';
+
 /* reset css */
 @layer reset {
   /* ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
@@ -403,6 +405,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 @layer base {
   :root {
+    font-family: Lato, sans-serif;
     height: 100%;
     width: 100%;
   }

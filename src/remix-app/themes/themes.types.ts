@@ -25,6 +25,7 @@ interface Tokens {
   color_action_text_fill: Color;
 
   // Outline
+  color_action_text_outline: Color;
   color_action_background_outline: Color;
   color_action_background_outline_hover: Color;
   color_action_border_outline: Color;
