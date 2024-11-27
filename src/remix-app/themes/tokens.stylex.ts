@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { baseColors, blueGrey, orange, orangeAlpha } from './colors.stylex';
+import { baseColors, blueGrey, blueGreyAlpha, orange, orangeAlpha } from './colors.stylex';
 
 import type { Tokens } from './themes.types';
 
@@ -22,7 +22,7 @@ export const tokens = stylex.defineVars<Tokens>({
   color_gradient_three_background_end: stylex.types.color({ default: blueGrey.bg200, [DARK]: blueGrey.bg700 }),
   /* ---------------------------- */
   // Actions
-  color_action_text: stylex.types.color({ default: orange.o700, [DARK]: orange.o300 }),
+  color_action_text: stylex.types.color({ default: blueGrey.bg700, [DARK]: blueGrey.bg50 }),
   color_action_outline: stylex.types.color({ default: orangeAlpha.o700_40, [DARK]: orangeAlpha.o300_40 }),
 
   // Fill
@@ -34,6 +34,7 @@ export const tokens = stylex.defineVars<Tokens>({
   color_action_text_fill: stylex.types.color({ default: blueGrey.bg50, [DARK]: blueGrey.bg800 }),
 
   // Outline
+  color_action_text_outline: stylex.types.color({ default: orange.o700, [DARK]: orange.o300 }),
   color_action_background_outline: stylex.types.color({
     default: baseColors.transparent,
     [DARK]: baseColors.transparent,
@@ -50,8 +51,8 @@ export const tokens = stylex.defineVars<Tokens>({
     [DARK]: baseColors.transparent,
   }),
   color_action_background_ghost_hover: stylex.types.color({
-    default: orangeAlpha.o700_20,
-    [DARK]: orangeAlpha.o300_20,
+    default: blueGreyAlpha.bg700_20,
+    [DARK]: blueGreyAlpha.bg50_20,
   }),
   /* ---------------------------- */
   // Typography

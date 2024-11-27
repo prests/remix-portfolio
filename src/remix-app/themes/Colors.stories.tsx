@@ -1,12 +1,13 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { baseColors, blueGrey, grey, orange, orangeAlpha } from './colors.stylex';
+import { baseColors, blueGrey, blueGreyAlpha, grey, orange, orangeAlpha } from './colors.stylex';
+import { spacing, spacingMapping } from './spacing.stylex';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 type Story = StoryObj<typeof meta>;
 
-const excludedColorKeys = ['__themeName__'];
+const excludedKeys = ['__themeName__'];
 
 const styles = stylex.create({
   colorComponentWrapperLight: {
@@ -37,13 +38,19 @@ const styles = stylex.create({
     lineHeight: '1.5rem',
     marginBottom: '0.25rem',
   },
+  spacingLight: {
+    border: '2px solid black',
+  },
+  spacingDark: {
+    backgroundColor: 'white',
+  },
 });
 
 const removeLettersFromString = (input: string) => input.replace(/[a-zA-Z]/g, '');
 
 const mapColorsToElements = <T extends stylex.VarGroup<{}>>(title: string, colors: T, shouldRemoveLetters = true) => {
   const Colors = Object.entries(colors)
-    .filter(([key]) => !excludedColorKeys.includes(key))
+    .filter(([key]) => !excludedKeys.includes(key))
     .map(([colorName, color]) => (
       <div key={colorName}>
         <div {...stylex.props(styles.color)} style={{ backgroundColor: color.toString() }} />
@@ -59,11 +66,27 @@ const mapColorsToElements = <T extends stylex.VarGroup<{}>>(title: string, color
   );
 };
 
-const Colors: Story = {
+const mapSpacingToElements = <T extends stylex.VarGroup<{}>>(spacings: T, style: stylex.StyleXStyles) =>
+  Object.entries(spacings)
+    .filter(([key]) => !excludedKeys.includes(key))
+    .map(([key, spacing]) => (
+      <div key={key} style={{ marginBottom: '12px' }}>
+        <h2>
+          {key} - {spacingMapping[key as keyof typeof spacingMapping]}
+        </h2>
+        <div style={{ display: 'flex', gap: spacing.toString() }}>
+          <div {...stylex.props(styles.color, style)} /> <div {...stylex.props(styles.color, style)} />{' '}
+          <div {...stylex.props(styles.color, style)} />
+        </div>
+      </div>
+    ));
+
+export const Colors: Story = {
   render: (_, { globals }) => {
     const BaseColors = mapColorsToElements('Base Colors', baseColors, false);
     const GreyColors = mapColorsToElements('Grey', grey);
     const BlueGreyColors = mapColorsToElements('Blue Grey', blueGrey);
+    const BlueGreyAlphaColors = mapColorsToElements('Blue Grey Opacities', blueGreyAlpha);
     const OrangeColors = mapColorsToElements('Orange', orange);
     const OrangeAlphaColors = mapColorsToElements('Orange Opacities', orangeAlpha);
 
@@ -77,8 +100,24 @@ const Colors: Story = {
         {BaseColors}
         {GreyColors}
         {BlueGreyColors}
+        {BlueGreyAlphaColors}
         {OrangeColors}
         {OrangeAlphaColors}
+      </div>
+    );
+  },
+};
+
+export const Spacing: Story = {
+  render: (_, { globals }) => {
+    const isDarkMode = globals.backgrounds?.value === '#333';
+
+    const Spacings = mapSpacingToElements(spacing, isDarkMode ? styles.spacingDark : styles.spacingLight);
+
+    console.log(spacing);
+    return (
+      <div {...stylex.props(isDarkMode ? styles.colorComponentWrapperDark : styles.colorComponentWrapperLight)}>
+        <>{Spacings}</>
       </div>
     );
   },
@@ -90,6 +129,4 @@ const meta: Meta = {
     layout: 'centered',
   },
 };
-
 export default meta;
-export { Colors };

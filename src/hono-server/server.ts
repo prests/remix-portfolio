@@ -61,7 +61,8 @@ app.use(
       defaultSrc: ["'self'"],
       connectSrc: ["'self'", ...(IS_PRODUCTION_MODE ? [] : ['wss:', 'data:'])],
       scriptSrc: ["'self'", "'strict-dynamic'", NONCE],
-      styleSrc: ["'self'", NONCE],
+      styleSrc: ["'self'", 'https://fonts.googleapis.com', NONCE],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com'],
     },
     // Deprecated or not needed headers
     xXssProtection: false,

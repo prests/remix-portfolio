@@ -4,13 +4,15 @@ import { tokens } from '../../themes/tokens.stylex';
 
 import { logoVars } from './logo.stylex';
 
+import type { BaseIconProps } from '../icons.types';
+
 const styles = stylex.create({
   base: {
     height: '100%',
     width: '100%',
     [logoVars.lineColor]: {
-      default: tokens.color_text_brand,
-      ':hover': 'black',
+      default: tokens.color_action_background_fill,
+      ':hover': tokens.color_action_text,
     },
   },
   line: {
@@ -20,8 +22,8 @@ const styles = stylex.create({
   },
 });
 
-const Logo = () => (
-  <svg {...stylex.props(styles.base)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 83 173.354">
+const Logo = ({ style }: BaseIconProps) => (
+  <svg {...stylex.props(styles.base, style)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 83 173.354">
     <g id="Group_2" data-name="Group 2" transform="translate(158 436.177)">
       <line {...stylex.props(styles.line)} y2="40" transform="translate(-156.5 -405.5)" />
       <line {...stylex.props(styles.line)} y2="40" transform="translate(-116.5 -405.5)" />
