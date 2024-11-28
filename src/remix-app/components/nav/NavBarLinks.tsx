@@ -3,22 +3,40 @@ import { Link } from '@remix-run/react';
 import { typographyStyles, weightStyles } from '../../themes/typography.stylex';
 import Button from '../button/Button';
 
-const NavBarLinks = () => {
+interface NavBarLinksProps {
+  onLinkClick?: () => void;
+}
+
+const NavBarLinks = ({ onLinkClick }: NavBarLinksProps) => {
   return (
     <>
-      <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
-        <Link to="/about">About</Link>
-      </Button>
+      <li>
+        <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
+          <Link to="/about" onClick={onLinkClick}>
+            About
+          </Link>
+        </Button>
+      </li>
 
-      <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
-        <Link to="/experience">Experience</Link>
-      </Button>
-      <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
-        <Link to="mailto:shayne.preston@protonmail.com">Contact</Link>
-      </Button>
-      <Button variant="outline" style={[typographyStyles[5], weightStyles.medium]} asChild>
-        <Link to="">Resume</Link>
-      </Button>
+      <li>
+        <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
+          <Link to="/experience" onClick={onLinkClick}>
+            Experience
+          </Link>
+        </Button>
+      </li>
+
+      <li>
+        <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
+          <Link to="mailto:shayne.preston@protonmail.com">Contact</Link>
+        </Button>
+      </li>
+
+      <li>
+        <Button variant="outline" style={[typographyStyles[5], weightStyles.medium]} asChild>
+          <Link to="">Resume</Link>
+        </Button>
+      </li>
     </>
   );
 };

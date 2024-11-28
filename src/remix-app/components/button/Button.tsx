@@ -4,11 +4,13 @@ import { type ButtonHTMLAttributes, forwardRef } from 'react';
 
 import { tokens } from '../../themes/tokens.stylex';
 
+type ButtonVariant = keyof Omit<typeof styles, 'base'>;
+
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
   /**
    * Button styles.
    */
-  variant?: keyof Omit<typeof styles, 'base'>;
+  variant?: ButtonVariant;
   /**
    * Render as a child element.
    */
@@ -77,4 +79,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button';
 
 export default Button;
-export type { ButtonProps };
+export type { ButtonProps, ButtonVariant };
