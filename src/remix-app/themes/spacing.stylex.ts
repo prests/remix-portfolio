@@ -9,6 +9,7 @@ const s6 = '2rem' as const;
 const s7 = '2.5rem' as const;
 const s8 = '3rem' as const;
 const s9 = '4rem' as const;
+const s10 = '5.5rem' as const;
 
 export const spacing = stylex.defineVars({
   s1,
@@ -20,6 +21,7 @@ export const spacing = stylex.defineVars({
   s7,
   s8,
   s9,
+  s10,
 });
 
 // For Storybook
@@ -33,4 +35,5 @@ export const spacingMapping = {
   s7,
   s8,
   s9,
+  s10,
 };
