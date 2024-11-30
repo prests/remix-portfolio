@@ -36,6 +36,10 @@ const lightTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   /* ---------------------------- */
   // Typography
   color_text_brand: stylex.types.color(orange.o700),
+  /* ---------------------------- */
+  // Dialog
+  color_dialog_background_color: stylex.types.color(blueGrey.bg50),
+  color_dialog_border_color: stylex.types.color(blueGrey.bg100),
 });
 
 export { lightTheme };

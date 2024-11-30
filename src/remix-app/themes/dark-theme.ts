@@ -7,13 +7,13 @@ import type { ThemeTokens } from './themes.types';
 
 const darkTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   // Pages
-  color_base_page_background: stylex.types.color(blueGrey.bg700),
+  color_base_page_background: stylex.types.color(blueGrey.bg800),
   color_gradient_one_background_start: stylex.types.color(orange.o600),
   color_gradient_one_background_end: stylex.types.color(orange.o700),
   color_gradient_two_background_start: stylex.types.color(orange.o600),
   color_gradient_two_background_end: stylex.types.color(orange.o700),
-  color_gradient_three_background_start: stylex.types.color(blueGrey.bg600),
-  color_gradient_three_background_end: stylex.types.color(blueGrey.bg700),
+  color_gradient_three_background_start: stylex.types.color(blueGrey.bg700),
+  color_gradient_three_background_end: stylex.types.color(blueGrey.bg800),
   /* ---------------------------- */
   // Actions
   color_action_text: stylex.types.color(blueGrey.bg50),
@@ -36,6 +36,10 @@ const darkTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   /* ---------------------------- */
   // Typography
   color_text_brand: stylex.types.color(orange.o300),
+  /* ---------------------------- */
+  // Dialog
+  color_dialog_background_color: stylex.types.color(blueGrey.bg800),
+  color_dialog_border_color: stylex.types.color(blueGrey.bg800),
 });
 
 export { darkTheme };
