@@ -2,6 +2,7 @@ import { Outlet } from '@remix-run/react';
 
 import { Document } from './Document';
 import AuroraBackground from './components/background/AuroraBackground';
+import Footer from './components/footer/Footer';
 import NavBar from './components/nav/Navbar';
 
 const App = () => (
@@ -9,6 +10,7 @@ const App = () => (
     <AuroraBackground />
     <NavBar />
     <Outlet />
+    <Footer />
   </Document>
 );
 

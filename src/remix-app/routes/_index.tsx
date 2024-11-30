@@ -89,7 +89,7 @@ const RootIndexRoute = () => (
       <Text
         as="p"
         size={5}
-        weight="light"
+        weight="regular"
         wrap="pretty"
         truncate={false}
         style={[styles.description, styles.contactDescription]}
