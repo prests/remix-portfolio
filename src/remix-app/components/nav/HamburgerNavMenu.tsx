@@ -1,38 +1,110 @@
 import * as stylex from '@stylexjs/stylex';
-import { createPortal } from 'react-dom';
+import { useCallback, useEffect, useState } from 'react';
 
+import CloseIcon from '../..//assets/icons/CloseIcon';
+import HamburgerMenuIcon from '../../assets/icons/HamburgerMenuIcon';
 import { spacing } from '../../themes/spacing.stylex';
+import A11yText from '../a11y/A11yText';
+import Button from '../button/Button';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../dialog/Dialog';
 
+import LogoLink from './LogoLink';
 import NavBarLinks from './NavBarLinks';
 
-interface HamburgerNavMenuProps {
-  isOpen: boolean;
-}
+const smSize = 640 as const;
+const sm = `@media (min-width: ${smSize}px)`;
 
 const styles = stylex.create({
   base: {
-    backgroundColor: 'white',
-    position: 'fixed',
-    width: '100%',
-    height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: spacing.s10,
     alignItems: 'center',
     gap: spacing.s3,
   },
+  hamburgerMenuButton: {
+    marginLeft: 'auto',
+    display: {
+      default: 'flex',
+      [sm]: 'none',
+    },
+  },
+  hambugerCloseButton: {
+    marginLeft: 'auto',
+  },
+  hamburgerTitle: {
+    margin: spacing.s3,
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
 
-const HamburgerNavMenu = ({ isOpen }: HamburgerNavMenuProps) => {
-  if (!isOpen) {
-    return <></>;
-  }
+const HamburgerNavMenu = () => {
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
 
-  return createPortal(
-    <menu {...stylex.props(styles.base)}>
-      <NavBarLinks />
-    </menu>,
-    document.body
+  const onLinkClick = useCallback(() => setIsHamburgerMenuOpen(false), []);
+
+  useEffect(() => {
+    if (isHamburgerMenuOpen) {
+      const onResize = () => {
+        if (window.innerWidth > smSize) {
+          setIsHamburgerMenuOpen(false);
+          document.body.focus();
+        }
+      };
+
+      window.addEventListener('resize', onResize);
+
+      return () => {
+        window.removeEventListener('resize', onResize);
+      };
+    }
+
+    return;
+  }, [isHamburgerMenuOpen]);
+
+  return (
+    <Dialog open={isHamburgerMenuOpen} onOpenChange={setIsHamburgerMenuOpen}>
+      <DialogTrigger asChild>
+        <Button variant="ghost" style={styles.hamburgerMenuButton} aria-label="open navigation menu">
+          <HamburgerMenuIcon />
+        </Button>
+      </DialogTrigger>
+
+      <DialogContent isCloseOverriden>
+        <DialogHeader>
+          <DialogTitle {...stylex.props(styles.hamburgerTitle)}>
+            <LogoLink onLinkClick={onLinkClick} />
+
+            <A11yText>
+              <DialogDescription>
+                This menu contains links to navigate through the website. Use the Tab key to move between links and the
+                Escape key to close the menu.
+              </DialogDescription>
+            </A11yText>
+
+            <DialogClose asChild>
+              <Button variant="ghost" style={styles.hambugerCloseButton} aria-label="close navigation menu">
+                <CloseIcon />
+              </Button>
+            </DialogClose>
+          </DialogTitle>
+        </DialogHeader>
+
+        <nav>
+          <ul {...stylex.props(styles.base)}>
+            <NavBarLinks onLinkClick={onLinkClick} />
+          </ul>
+        </nav>
+      </DialogContent>
+    </Dialog>
   );
 };
 

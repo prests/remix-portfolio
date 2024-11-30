@@ -11,5 +11,9 @@ const config: StorybookConfig = {
       },
     },
   },
+  previewBody: body => `
+    ${body}
+    <script></script>
+  `,
 };
 export default config;

@@ -66,7 +66,9 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.5",
+    "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-visually-hidden": "^1.1.0",
     "@remix-run/node": "^2.13.1",
     "@remix-run/react": "^2.13.1",
     "@stylexjs/stylex": "^0.9.3",
@@ -76,6 +78,7 @@
     "react-dom": "^18.2.0",
     "remix-hono": "^0.0.16",
     "remix-island": "^0.2.0",
+    "remix-utils": "^7.7.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
