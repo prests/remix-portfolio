@@ -30,6 +30,7 @@ const styles = stylex.create({
     gap: spacing.s3,
   },
   hamburgerMenuButton: {
+    height: spacing.s7,
     marginLeft: 'auto',
     display: {
       default: 'flex',
@@ -37,10 +38,11 @@ const styles = stylex.create({
     },
   },
   hambugerCloseButton: {
+    height: spacing.s7,
     marginLeft: 'auto',
   },
   hamburgerTitle: {
-    margin: spacing.s3,
+    marginBottom: spacing.s3,
     display: 'flex',
     alignItems: 'center',
   },

@@ -8,7 +8,7 @@ import {
   typographyStyles,
   weightStyles,
   wrapStyles,
-} from 'src/remix-app/themes/typography.stylex';
+} from '../../../themes/typography.stylex';
 
 import type { TypographyProps } from '../typography.types';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
@@ -30,7 +30,7 @@ const Text = forwardRef<ElementRef<'span'>, TextProps>(
       {...stylex.props(
         typographyStyles[size],
         weightStyles[weight],
-        textAlignStyles[align],
+        align && textAlignStyles[align],
         wrapStyles[wrap],
         truncate && truncateStyles.truncate,
         style

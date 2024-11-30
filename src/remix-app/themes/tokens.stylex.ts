@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { baseColors, blueGrey, blueGreyAlpha, orange, orangeAlpha } from './colors.stylex';
+import { baseColors, blueGrey, blueGreyAlpha, grey, orange, orangeAlpha } from './colors.stylex';
 
 import type { Tokens } from './themes.types';
 
@@ -56,7 +56,9 @@ export const tokens = stylex.defineVars<Tokens>({
   }),
   /* ---------------------------- */
   // Typography
+  color_text_base: stylex.types.color({ default: grey.g600, [DARK]: grey.g300 }),
   color_text_brand: stylex.types.color({ default: orange.o700, [DARK]: orange.o300 }),
+  color_text_flare: stylex.types.color({ default: grey.g900, [DARK]: grey.g50 }),
   /* ---------------------------- */
   // Dialog
   color_dialog_background_color: stylex.types.color({ default: blueGrey.bg50, [DARK]: blueGrey.bg800 }),

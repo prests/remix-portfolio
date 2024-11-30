@@ -21,7 +21,6 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'sty
 
 const styles = stylex.create({
   base: {
-    height: '2.5rem',
     padding: '0.5rem 1rem',
     display: 'inline-flex',
     alignItems: 'center',

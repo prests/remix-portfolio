@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { baseColors, blueGrey, blueGreyAlpha, orange, orangeAlpha } from './colors.stylex';
+import { baseColors, blueGrey, blueGreyAlpha, grey, orange, orangeAlpha } from './colors.stylex';
 import { tokens } from './tokens.stylex';
 
 import type { ThemeTokens } from './themes.types';
@@ -35,7 +35,9 @@ const lightTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   color_action_background_ghost_hover: stylex.types.color(blueGreyAlpha.bg700_20),
   /* ---------------------------- */
   // Typography
+  color_text_base: stylex.types.color(grey.g800),
   color_text_brand: stylex.types.color(orange.o700),
+  color_text_flare: stylex.types.color(grey.g900),
   /* ---------------------------- */
   // Dialog
   color_dialog_background_color: stylex.types.color(blueGrey.bg50),

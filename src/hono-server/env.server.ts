@@ -8,7 +8,6 @@ const EnvSchema = z.object({
 
   // Injected
   ABORT_DELAY: z.preprocess(val => parseInt(String(val), 10), z.number()),
-  APP_NAME: z.string(),
 });
 
 const getEnv = () => EnvSchema.parse(process.env);

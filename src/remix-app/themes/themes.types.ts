@@ -36,6 +36,8 @@ interface Tokens {
   /* ---------------------------- */
   // Typography
   color_text_brand: Color;
+  color_text_base: Color;
+  color_text_flare: Color;
   /* ---------------------------- */
   // Dialog
   color_dialog_background_color: Color;
