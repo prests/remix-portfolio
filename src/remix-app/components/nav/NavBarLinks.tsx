@@ -34,7 +34,9 @@ const NavBarLinks = ({ onLinkClick }: NavBarLinksProps) => {
 
       <li>
         <Button style={[typographyStyles[5], weightStyles.medium]} asChild>
-          <Link to="">Resume</Link>
+          <a target="_blank" href="/shayne_preston_resume.pdf">
+            Resume
+          </a>
         </Button>
       </li>
     </>
