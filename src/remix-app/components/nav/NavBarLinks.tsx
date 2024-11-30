@@ -33,7 +33,7 @@ const NavBarLinks = ({ onLinkClick }: NavBarLinksProps) => {
       </li>
 
       <li>
-        <Button variant="outline" style={[typographyStyles[5], weightStyles.medium]} asChild>
+        <Button style={[typographyStyles[5], weightStyles.medium]} asChild>
           <Link to="">Resume</Link>
         </Button>
       </li>

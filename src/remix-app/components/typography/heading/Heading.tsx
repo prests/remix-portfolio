@@ -8,7 +8,7 @@ import {
   typographyStyles,
   weightStyles,
   wrapStyles,
-} from 'src/remix-app/themes/typography.stylex';
+} from '../../../themes/typography.stylex';
 
 import type { TypographyProps } from '../typography.types';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
@@ -25,7 +25,7 @@ const Heading = forwardRef<ElementRef<'h1'>, HeadingProps>(
       {...stylex.props(
         typographyStyles[size],
         weightStyles[weight],
-        textAlignStyles[align],
+        align && textAlignStyles[align],
         wrapStyles[wrap],
         truncate && truncateStyles.truncate,
         style

@@ -1,11 +1,13 @@
-import { json } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
 import * as stylex from '@stylexjs/stylex';
-import { useState } from 'react';
 
 import Button from '../components/button/Button';
+import Heading from '../components/typography/heading/Heading';
+import Text from '../components/typography/text/Text';
+import { spacing } from '../themes/spacing.stylex';
+import { tokens } from '../themes/tokens.stylex';
+import { typographyStyles } from '../themes/typography.stylex';
 
-import type { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/node';
 
 const meta: MetaFunction = () => [
   { title: 'Shayne Preston' },
@@ -16,49 +18,91 @@ const meta: MetaFunction = () => [
   },
 ];
 
-const loader = ({ context }: LoaderFunctionArgs) => {
-  const { APP_NAME } = context.env;
-
-  return json({ APP_NAME });
-};
+const smSize = 640 as const;
+const lgSize = 1024 as const;
+const sm = `@media (max-width: ${smSize}px)`;
+const lg = `@media (max-width: ${lgSize}px) and (min-width: ${smSize}px)`;
 
 const styles = stylex.create({
   page: {
-    display: 'grid',
-  },
-  section: {
-    margin: '3rem auto 0',
-    textAlign: 'center',
+    marginTop: spacing.s10,
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
   },
   title: {
-    fontWeight: 800,
-    fontSize: '3rem',
-    lineHeight: 1,
+    margin: `${spacing.s6} 0`,
+    color: tokens.color_text_brand,
   },
-  counter: {
-    margin: '1rem 0',
+  description: {
+    color: tokens.color_text_base,
+  },
+  contactDescription: {
+    margin: `${spacing.s5} 0`,
+  },
+  name: {
+    color: tokens.color_text_flare,
+  },
+  section: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: {
+      default: 'left',
+      [sm]: 'center',
+    },
+    margin: {
+      default: `${spacing.s8} auto 0`,
+      [lg]: `${spacing.s8} ${spacing.s4} 0`,
+      [sm]: `${spacing.s8} auto 0`,
+    },
+    textAlign: {
+      default: 'left',
+      [sm]: 'center',
+    },
+  },
+  contactButton: {
+    flex: '0 0 auto',
+    alignSelf: {
+      default: 'start',
+      [sm]: 'center',
+    },
+    width: 'auto',
+    maxWidth: 'fit-content',
   },
 });
 
-const RootIndexRoute = () => {
-  const { APP_NAME } = useLoaderData<typeof loader>();
+const RootIndexRoute = () => (
+  <main {...stylex.props(styles.page)}>
+    <section {...stylex.props(styles.section)}>
+      <Heading as="h1" size={9} weight="black" wrap="nowrap" truncate={false} style={styles.title}>
+        Welcome
+      </Heading>
 
-  const [count, setCount] = useState(0);
+      <Heading as="h2" size={7} weight="bold" wrap="pretty" truncate={false} style={styles.description}>
+        My name is{' '}
+        <Text as="span" size={7} weight="bold" wrap="pretty" truncate={false} style={styles.name}>
+          Shayne Preston
+        </Text>
+        , and I build web applications
+      </Heading>
 
-  return (
-    <main {...stylex.props(styles.page)}>
-      <section {...stylex.props(styles.section)}>
-        <h1 {...stylex.props(styles.title)}>{APP_NAME}</h1>
+      <Text
+        as="p"
+        size={5}
+        weight="light"
+        wrap="pretty"
+        truncate={false}
+        style={[styles.description, styles.contactDescription]}
+      >
+        Want to get in touch with me? Shoot me an email and I'll do my best to get back to you as quickly as possible!
+      </Text>
 
-        <p {...stylex.props(styles.counter)}>
-          <strong>Count:</strong> <span>{count}</span>
-        </p>
-
-        <Button onClick={() => setCount(val => val + 1)}>Click Me!</Button>
-      </section>
-    </main>
-  );
-};
+      <Button variant="outline" style={[typographyStyles[6], styles.contactButton]}>
+        Contact Me
+      </Button>
+    </section>
+  </main>
+);
 
 export default RootIndexRoute;
-export { loader, meta };
+export { meta };

@@ -1,15 +1,15 @@
 import * as stylex from '@stylexjs/stylex';
 
 export const size = stylex.defineVars({
-  s1: '12px',
-  s2: '14px',
-  s3: '16px',
-  s4: '18px',
-  s5: '20px',
-  s6: '24px',
-  s7: '28px',
-  s8: '35px',
-  s9: '60px',
+  s1: '0.75rem',
+  s2: '0.875rem',
+  s3: '1rem',
+  s4: '1.125rem',
+  s5: '1.25rem',
+  s6: '1.5rem',
+  s7: '1.875rem',
+  s8: '2.25rem',
+  s9: '3.75rem',
 });
 
 export const letterSpacing = stylex.defineVars({
@@ -25,15 +25,15 @@ export const letterSpacing = stylex.defineVars({
 });
 
 export const lineHeight = stylex.defineVars({
-  s1: '16px',
-  s2: '20px',
-  s3: '24px',
-  s4: '26px',
-  s5: '28px',
-  s6: '30px',
-  s7: '36px',
-  s8: '40px',
-  s9: '60px',
+  s1: '1rem',
+  s2: '1.25rem',
+  s3: '1.5rem',
+  s4: '1.75rem',
+  s5: '1.75rem',
+  s6: '2rem',
+  s7: '2.25rem',
+  s8: '2.5rem',
+  s9: '1',
 });
 
 export const weights = stylex.defineVars({
@@ -41,6 +41,7 @@ export const weights = stylex.defineVars({
   regular: 400,
   medium: 500,
   bold: 700,
+  black: 900,
 });
 
 export const typographyStyles = stylex.create({
@@ -103,6 +104,9 @@ export const weightStyles = stylex.create({
   },
   bold: {
     fontWeight: weights.bold,
+  },
+  black: {
+    fontWeight: weights.black,
   },
 });
 

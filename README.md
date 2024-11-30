@@ -42,7 +42,6 @@ ensure type safety when loading these variables.
 
 ```sh
 ABORT_DELAY=5000
-APP_NAME=Example App
 ```
 
 2. These variables are now accessible on the `process.env` object when the server starts and validated with Zod to catch

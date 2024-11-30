@@ -5,7 +5,6 @@ const MOCK_APP_LOAD_CONTEXT: AppLoadContext = {
   nonce: '123test',
   env: {
     ABORT_DELAY: 250,
-    APP_NAME: 'Example App Test',
     npm_package_version: '0.0.0',
   },
 };

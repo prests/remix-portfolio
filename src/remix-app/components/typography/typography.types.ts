@@ -14,11 +14,11 @@ interface TypographyProps<Tags extends ElementType> {
   /**
    * Font weight.
    */
-  weight: 'light' | 'regular' | 'medium' | 'bold';
+  weight: 'light' | 'regular' | 'medium' | 'bold' | 'black';
   /**
    * Text alignment.
    */
-  align: 'left' | 'center' | 'right';
+  align?: 'left' | 'center' | 'right';
   /**
    * Text wrapping.
    */
@@ -36,6 +36,17 @@ interface TypographyProps<Tags extends ElementType> {
    */
   style?: StyleXStyles<{
     color?: Color;
+    padding?: string | number;
+    paddingLeft?: string | number;
+    paddingTop?: string | number;
+    paddingRight?: string | number;
+    paddingBottom?: string | number;
+    margin?: string | number;
+    marginLeft?: string | number;
+    marginTop?: string | number;
+    marginRight?: string | number;
+    marginBottom?: string | number;
+    textAlign?: string;
   }>;
 }
 
