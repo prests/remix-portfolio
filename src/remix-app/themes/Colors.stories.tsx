@@ -114,7 +114,6 @@ export const Spacing: Story = {
 
     const Spacings = mapSpacingToElements(spacing, isDarkMode ? styles.spacingDark : styles.spacingLight);
 
-    console.log(spacing);
     return (
       <div {...stylex.props(isDarkMode ? styles.colorComponentWrapperDark : styles.colorComponentWrapperLight)}>
         <>{Spacings}</>

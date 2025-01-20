@@ -130,7 +130,6 @@ const handleBrowserRequest = (
           );
 
           const theme = getTheme(MODE);
-          console.log(theme);
 
           body.write(generateOpeningHTML(loadContext.nonce, headStr, theme));
           pipe(body);
