@@ -15,12 +15,7 @@ export default defineConfig({
       cert: './.cert/cert.crt',
     },
     warmup: {
-      clientFiles: [
-        './src/remix-app/entry.client.tsx',
-        './src/remix-app/root.tsx',
-        './src/remix-app/routes/**/*',
-        '!./app/routes/**/*.test.{ts,tsx}',
-      ],
+      clientFiles: ['./src/remix-app/entry.client.tsx', './src/remix-app/root.tsx', './src/remix-app/routes/**/*'],
     },
   },
   optimizeDeps: {
@@ -30,11 +25,17 @@ export default defineConfig({
     devServer({
       injectClientScript: false,
       entry: 'src/hono-server/server.ts',
-      exclude: [...defaultOptions.exclude, /.*\.css\?url$/],
+      exclude: [
+        ...defaultOptions.exclude,
+        /^\/(remix-app)\/.+/,
+        /^\/@.+$/,
+        /^\/node_modules\/.*/,
+        /.*\.css\?url$/,
+        /\?import$/,
+      ],
     }),
     !process.env.VITEST &&
       remix({
-        ignoredRouteFiles: ['**/.*'],
         appDirectory: 'src/remix-app',
         serverModuleFormat: 'esm',
       }),

@@ -10,7 +10,7 @@ import { typographyStyles } from '../themes/typography.stylex';
 import type { MetaFunction } from '@remix-run/node';
 
 const meta: MetaFunction = () => [
-  { title: 'Shayne Preston' },
+  { title: 'Shayne Preston - Software Engineer & Web Developer' },
   {
     name: 'description',
     content:
