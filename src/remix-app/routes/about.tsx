@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
 
-
 import Heading from '../components/typography/heading/Heading';
 import Text from '../components/typography/text/Text';
 import { rounded } from '../themes/rounded.stylex';
