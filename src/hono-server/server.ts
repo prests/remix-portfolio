@@ -97,7 +97,7 @@ app.use(async (c, next) => {
 });
 
 if (IS_PRODUCTION_MODE) {
-  serve({ ...app, port: Number(process.env.PORT) || 3_000 }, async info => {
+  serve({ ...app, port: Number(process.env.PORT) || 3_000, hostname: '0.0.0.0' }, async info => {
     console.log(`🚀 Server started on port ${info.port}`);
   });
 }
