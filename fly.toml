@@ -6,6 +6,9 @@
 app = 'shayne-remix-portfolio'
 primary_region = 'ewr'
 
+[env]
+  ABORT_DELAY = 5000
+
 [build]
 
 [http_service]
