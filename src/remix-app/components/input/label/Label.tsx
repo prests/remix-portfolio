@@ -2,7 +2,7 @@ import * as LabelPrimitive from '@radix-ui/react-label';
 import * as stylex from '@stylexjs/stylex';
 import { forwardRef } from 'react';
 
-import { typographyStyles } from '../../themes/typography.stylex';
+import { typographyStyles } from '../../../themes/typography.stylex';
 
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 

@@ -2,12 +2,11 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import * as stylex from '@stylexjs/stylex';
 import { forwardRef } from 'react';
 
-import { rounded } from '../../themes/rounded.stylex';
-import { spacing } from '../../themes/spacing.stylex';
-import { tokens } from '../../themes/tokens.stylex';
-import { size, typographyStyles, weightStyles } from '../../themes/typography.stylex';
-
-import { Label } from './Label';
+import { rounded } from '../../../themes/rounded.stylex';
+import { spacing } from '../../../themes/spacing.stylex';
+import { tokens } from '../../../themes/tokens.stylex';
+import { size, typographyStyles, weightStyles } from '../../../themes/typography.stylex';
+import { Label } from '../label/Label';
 
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 

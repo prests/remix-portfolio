@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { useTheme } from '../../themes/ThemeProvider';
 import { getStoredThemeMode, setStoredThemeMode } from '../../themes/theme-helpers';
 import { DARK_MODE, LIGHT_MODE } from '../../themes/themes.constant';
-import { RadioGroup, RadioGroupItem } from '../input/RadioGroup';
+import { RadioGroup, RadioGroupItem } from '../input/radio-group/RadioGroup';
 
 import type { ThemeMode } from '../../themes/themes.types';
 

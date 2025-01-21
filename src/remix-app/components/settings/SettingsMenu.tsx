@@ -32,9 +32,12 @@ const styles = stylex.create({
 
 const SettingsMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(null);
 
   return (
     <>
+      <div ref={setPortalContainer} />
+
       <Dialog open={isOpen} onOpenChange={setIsOpen} modal>
         <DialogTrigger asChild>
           <Button variant="ghost" styleOverride={styles.settingsButton}>
@@ -42,7 +45,7 @@ const SettingsMenu = () => {
           </Button>
         </DialogTrigger>
 
-        <DialogContent>
+        <DialogContent container={portalContainer}>
           <DialogHeader>
             <DialogTitle style={[styles.formTitle, typographyStyles[5], weightStyles.black]}>Settings</DialogTitle>{' '}
             <DialogDescription style={[styles.formDescription, typographyStyles[3], weightStyles.light]}>
