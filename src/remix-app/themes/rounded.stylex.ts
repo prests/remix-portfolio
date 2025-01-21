@@ -4,6 +4,7 @@ export const rounded = stylex.defineVars({
   sm: '0.125rem',
   md: '0.375rem',
   lg: '0.5rem',
+  round: '9999px',
 });
 
 export const borderRadiusStyles = stylex.create({
@@ -15,5 +16,8 @@ export const borderRadiusStyles = stylex.create({
   },
   lg: {
     borderRadius: rounded.lg,
+  },
+  round: {
+    borderRadius: rounded.round,
   },
 });

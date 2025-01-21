@@ -73,9 +73,9 @@ const HamburgerNavMenu = () => {
   }, [isHamburgerMenuOpen]);
 
   return (
-    <Dialog open={isHamburgerMenuOpen} onOpenChange={setIsHamburgerMenuOpen}>
+    <Dialog open={isHamburgerMenuOpen} onOpenChange={setIsHamburgerMenuOpen} modal>
       <DialogTrigger asChild>
-        <Button variant="ghost" style={styles.hamburgerMenuButton} aria-label="open navigation menu">
+        <Button variant="ghost" styleOverride={styles.hamburgerMenuButton} aria-label="open navigation menu">
           <HamburgerMenuIcon />
         </Button>
       </DialogTrigger>
@@ -93,7 +93,7 @@ const HamburgerNavMenu = () => {
             </A11yText>
 
             <DialogClose asChild>
-              <Button variant="ghost" style={styles.hambugerCloseButton} aria-label="close navigation menu">
+              <Button variant="ghost" styleOverride={styles.hambugerCloseButton} aria-label="close navigation menu">
                 <CloseIcon />
               </Button>
             </DialogClose>

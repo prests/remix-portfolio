@@ -97,7 +97,7 @@ const RootIndexRoute = () => (
         Want to get in touch with me? Shoot me an email and I'll do my best to get back to you as quickly as possible!
       </Text>
 
-      <Button variant="outline" style={[typographyStyles[6], styles.contactButton]}>
+      <Button variant="outline" styleOverride={[typographyStyles[6], styles.contactButton]}>
         Contact Me
       </Button>
     </section>

@@ -19,6 +19,9 @@ interface ExperienceProps extends PropsWithChildren {
 }
 
 const styles = stylex.create({
+  position: {
+    color: tokens.color_text_base,
+  },
   companyLink: {
     color: tokens.color_text_brand,
     background: `none, linear-gradient(to right, ${tokens.color_text_brand}, ${tokens.color_text_brand})`,
@@ -31,18 +34,21 @@ const styles = stylex.create({
     },
     transition: 'background-size 400ms',
   },
+  range: {
+    color: tokens.color_text_base,
+  },
 });
 
 const Experience = ({ position, company, range, children }: ExperienceProps) => (
   <div>
-    <Heading as="h3" size={6} weight="bold" wrap="pretty" truncate={false}>
+    <Heading as="h3" size={6} weight="bold" wrap="pretty" truncate={false} style={styles.position}>
       {position}{' '}
       <Link {...stylex.props(styles.companyLink)} to={company.url} aria-label={company.name}>
         @ {company.name}
       </Link>
     </Heading>
 
-    <Text as="p" size={4} weight="light" wrap="nowrap" truncate={false}>
+    <Text as="p" size={4} weight="light" wrap="nowrap" truncate={false} style={styles.range}>
       {range}
     </Text>
 
