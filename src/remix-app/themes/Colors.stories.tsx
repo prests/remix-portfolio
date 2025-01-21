@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { baseColors, blueGrey, blueGreyAlpha, grey, orange, orangeAlpha } from './colors.stylex';
+import { baseColors, blueGrey, blueGreyAlpha, grey, greyAlpha, orange, orangeAlpha } from './colors.stylex';
 import { spacing, spacingMapping } from './spacing.stylex';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -85,6 +85,7 @@ export const Colors: Story = {
   render: (_, { globals }) => {
     const BaseColors = mapColorsToElements('Base Colors', baseColors, false);
     const GreyColors = mapColorsToElements('Grey', grey);
+    const GreyAlphaColors = mapColorsToElements('Grey Opacities', greyAlpha);
     const BlueGreyColors = mapColorsToElements('Blue Grey', blueGrey);
     const BlueGreyAlphaColors = mapColorsToElements('Blue Grey Opacities', blueGreyAlpha);
     const OrangeColors = mapColorsToElements('Orange', orange);
@@ -99,6 +100,7 @@ export const Colors: Story = {
         <h1 {...stylex.props(styles.title)}>Colors</h1>
         {BaseColors}
         {GreyColors}
+        {GreyAlphaColors}
         {BlueGreyColors}
         {BlueGreyAlphaColors}
         {OrangeColors}
