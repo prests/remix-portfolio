@@ -2,7 +2,7 @@ FROM node:20-bullseye-slim as base
 RUN npm install -g pnpm@8.6.3
 
 ENV NODE_ENV production
-ARG APPLICATION_PORT=8080
+ARG APPLICATION_PORT=3000
 ENV PORT ${APPLICATION_PORT}
 ENV NODE_ENV production
 ENV HOST 0.0.0.0
