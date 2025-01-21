@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { baseColors, blueGrey, blueGreyAlpha, grey, orange, orangeAlpha } from './colors.stylex';
+import { baseColors, blueGrey, blueGreyAlpha, grey, greyAlpha, orange, orangeAlpha } from './colors.stylex';
 import { tokens } from './tokens.stylex';
 
 import type { ThemeTokens } from './themes.types';
@@ -36,6 +36,7 @@ const darkTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   /* ---------------------------- */
   // Typography
   color_text_base: stylex.types.color(grey.g300),
+  color_text_mute: stylex.types.color(greyAlpha.g300_60),
   color_text_brand: stylex.types.color(orange.o300),
   color_text_flare: stylex.types.color(grey.g50),
   /* ---------------------------- */

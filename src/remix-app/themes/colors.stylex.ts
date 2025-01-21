@@ -32,6 +32,11 @@ export const blueGrey = stylex.defineVars({
   bg900: 'hsl(209, 25%, 5%)',
 });
 
+export const greyAlpha = stylex.defineVars({
+  g300_60: 'hsla(4, 8%, 66%, 0.6)',
+  g600_60: 'hsla(4, 8%, 36%, 0.6)',
+});
+
 export const blueGreyAlpha = stylex.defineVars({
   bg50_20: 'hsla(209, 25%, 95%, 0.2)',
   bg700_20: 'hsla(209, 25%, 25%, 0.2)',

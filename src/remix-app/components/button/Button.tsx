@@ -4,7 +4,7 @@ import { type ButtonHTMLAttributes, forwardRef } from 'react';
 
 import { tokens } from '../../themes/tokens.stylex';
 
-interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Button styles.
    */
@@ -16,7 +16,7 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'sty
   /**
    * Custom style override.
    */
-  style?: stylex.StyleXStyles;
+  styleOverride?: stylex.StyleXStyles;
 }
 
 const styles = stylex.create({
@@ -68,9 +68,9 @@ const styles = stylex.create({
 });
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'fill', asChild = false, style, ...props }, ref) => {
+  ({ className, variant = 'fill', asChild = false, styleOverride, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
-    return <Comp ref={ref} {...stylex.props(styles.base, styles[variant], style)} {...props} />;
+    return <Comp {...props} ref={ref} {...stylex.props(styles.base, styles[variant], styleOverride)} />;
   }
 );
 Button.displayName = 'Button';

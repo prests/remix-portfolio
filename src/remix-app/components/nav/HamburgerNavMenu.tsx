@@ -50,6 +50,7 @@ const styles = stylex.create({
 
 const HamburgerNavMenu = () => {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(null);
 
   const onLinkClick = useCallback(() => setIsHamburgerMenuOpen(false), []);
 
@@ -73,40 +74,44 @@ const HamburgerNavMenu = () => {
   }, [isHamburgerMenuOpen]);
 
   return (
-    <Dialog open={isHamburgerMenuOpen} onOpenChange={setIsHamburgerMenuOpen}>
-      <DialogTrigger asChild>
-        <Button variant="ghost" style={styles.hamburgerMenuButton} aria-label="open navigation menu">
-          <HamburgerMenuIcon />
-        </Button>
-      </DialogTrigger>
+    <>
+      <div ref={setPortalContainer} />
 
-      <DialogContent isCloseOverriden>
-        <DialogHeader>
-          <DialogTitle {...stylex.props(styles.hamburgerTitle)}>
-            <LogoLink onLinkClick={onLinkClick} />
+      <Dialog open={isHamburgerMenuOpen} onOpenChange={setIsHamburgerMenuOpen} modal>
+        <DialogTrigger asChild>
+          <Button variant="ghost" styleOverride={styles.hamburgerMenuButton} aria-label="open navigation menu">
+            <HamburgerMenuIcon />
+          </Button>
+        </DialogTrigger>
 
-            <A11yText>
-              <DialogDescription>
-                This menu contains links to navigate through the website. Use the Tab key to move between links and the
-                Escape key to close the menu.
-              </DialogDescription>
-            </A11yText>
+        <DialogContent container={portalContainer} isCloseOverriden>
+          <DialogHeader>
+            <DialogTitle {...stylex.props(styles.hamburgerTitle)}>
+              <LogoLink onLinkClick={onLinkClick} />
 
-            <DialogClose asChild>
-              <Button variant="ghost" style={styles.hambugerCloseButton} aria-label="close navigation menu">
-                <CloseIcon />
-              </Button>
-            </DialogClose>
-          </DialogTitle>
-        </DialogHeader>
+              <A11yText>
+                <DialogDescription>
+                  This menu contains links to navigate through the website. Use the Tab key to move between links and
+                  the Escape key to close the menu.
+                </DialogDescription>
+              </A11yText>
 
-        <nav>
-          <ul {...stylex.props(styles.base)}>
-            <NavBarLinks onLinkClick={onLinkClick} />
-          </ul>
-        </nav>
-      </DialogContent>
-    </Dialog>
+              <DialogClose asChild>
+                <Button variant="ghost" styleOverride={styles.hambugerCloseButton} aria-label="close navigation menu">
+                  <CloseIcon />
+                </Button>
+              </DialogClose>
+            </DialogTitle>
+          </DialogHeader>
+
+          <nav>
+            <ul {...stylex.props(styles.base)}>
+              <NavBarLinks onLinkClick={onLinkClick} />
+            </ul>
+          </nav>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ const NavBarLinks = ({ onLinkClick }: NavBarLinksProps) => {
   return (
     <>
       <li>
-        <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
+        <Button variant="ghost" styleOverride={[typographyStyles[5], weightStyles.bold]} asChild>
           <Link to="/about" onClick={onLinkClick}>
             About
           </Link>
@@ -19,7 +19,7 @@ const NavBarLinks = ({ onLinkClick }: NavBarLinksProps) => {
       </li>
 
       <li>
-        <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
+        <Button variant="ghost" styleOverride={[typographyStyles[5], weightStyles.bold]} asChild>
           <Link to="/experience" onClick={onLinkClick}>
             Experience
           </Link>
@@ -27,13 +27,13 @@ const NavBarLinks = ({ onLinkClick }: NavBarLinksProps) => {
       </li>
 
       <li>
-        <Button variant="ghost" style={[typographyStyles[5], weightStyles.bold]} asChild>
+        <Button variant="ghost" styleOverride={[typographyStyles[5], weightStyles.bold]} asChild>
           <Link to="mailto:shayne.preston@protonmail.com">Contact</Link>
         </Button>
       </li>
 
       <li>
-        <Button style={[typographyStyles[5], weightStyles.medium]} asChild>
+        <Button styleOverride={[typographyStyles[5], weightStyles.medium]} asChild>
           <a target="_blank" href="/shayne_preston_resume.pdf">
             Resume
           </a>
