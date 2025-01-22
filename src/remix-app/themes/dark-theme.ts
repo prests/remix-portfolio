@@ -8,12 +8,15 @@ import type { ThemeTokens } from './themes.types';
 const darkTheme = stylex.createTheme<stylex.VarGroup<ThemeTokens>>(tokens, {
   // Pages
   color_base_page_background: stylex.types.color(blueGrey.bg800),
-  color_gradient_one_background_start: stylex.types.color(orange.o600),
-  color_gradient_one_background_end: stylex.types.color(orange.o700),
-  color_gradient_two_background_start: stylex.types.color(orange.o600),
-  color_gradient_two_background_end: stylex.types.color(orange.o700),
-  color_gradient_three_background_start: stylex.types.color(blueGrey.bg700),
-  color_gradient_three_background_end: stylex.types.color(blueGrey.bg800),
+  color_gradient_one_background_start: stylex.types.color(orange.o400),
+  color_gradient_one_background_end: stylex.types.color(orange.o500),
+  color_gradient_two_background_start: stylex.types.color(orange.o500),
+  color_gradient_two_background_end: stylex.types.color(orange.o600),
+  color_gradient_three_background_start: stylex.types.color(orange.o600),
+  color_gradient_three_background_end: stylex.types.color(orange.o700),
+  color_base_page_logo: stylex.types.color(blueGrey.bg50),
+  color_base_page_logo_hover: stylex.types.color(orange.o100),
+
   /* ---------------------------- */
   // Actions
   color_action_text: stylex.types.color(blueGrey.bg50),

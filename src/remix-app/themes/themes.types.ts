@@ -14,6 +14,8 @@ interface Tokens {
   color_gradient_two_background_end: Color;
   color_gradient_three_background_start: Color;
   color_gradient_three_background_end: Color;
+  color_base_page_logo: Color;
+  color_base_page_logo_hover: Color;
   /* ---------------------------- */
   // Actions
   color_action_text: Color;

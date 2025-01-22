@@ -2,6 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 
 import { tokens } from '../../themes/tokens.stylex';
 
+const smSize = 640 as const;
+const lgSize = 1024 as const;
+const sm = `@media (max-width: ${smSize}px)`;
+const lg = `@media (max-width: ${lgSize}px) and (min-width: ${smSize}px)`;
+
 const swayOne = stylex.keyframes({
   '0%': {
     transform: 'translate(0, 0) rotate(0deg) scale(1)',
@@ -47,17 +52,32 @@ const swayFour = stylex.keyframes({
 const styles = stylex.create({
   auroraWrapper: {
     backgroundColor: tokens.color_base_page_background,
-    position: 'fixed',
+    position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    zIndex: -1,
+    zIndex: -3,
+  },
+  solidBackground: {
+    position: 'fixed',
+    backgroundColor: tokens.color_base_page_background,
+    height: '100%',
+    width: '100%',
+    zIndex: -2,
   },
   auroraSvg: {
+    position: 'absolute',
+    zIndex: 0,
+    transformOrigin: 'top left',
+    transform: {
+      default: 'skewY(-5deg)',
+      [lg]: 'skewY(-7deg)',
+      [sm]: 'skewY(-9deg)',
+    },
     width: '100%',
-    height: '100%',
+    height: '20%',
   },
   ellipse: {
     transformOrigin: 'center',
@@ -90,25 +110,25 @@ const styles = stylex.create({
   },
   animationOne: {
     animationName: swayOne,
-    animationDuration: '5s',
+    animationDuration: '4s',
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',
   },
   animationTwo: {
     animationName: swayTwo,
-    animationDuration: '7s',
+    animationDuration: '6s',
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',
   },
   animationThree: {
     animationName: swayThree,
-    animationDuration: '10s',
+    animationDuration: '6s',
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',
   },
   animationFour: {
     animationName: swayFour,
-    animationDuration: '19s',
+    animationDuration: '6s',
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',
   },
@@ -117,6 +137,7 @@ const styles = stylex.create({
 const AuroraBackground = () => {
   return (
     <div {...stylex.props(styles.auroraWrapper)}>
+      <div {...stylex.props(styles.solidBackground)} />
       <svg {...stylex.props(styles.auroraSvg)} xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="gradient1" cx="50%" cy="50%" r="50%">
@@ -139,42 +160,34 @@ const AuroraBackground = () => {
         <g filter="url(#blur)">
           <ellipse
             {...stylex.props(styles.ellipse, styles.animationOne)}
-            cx="20%"
-            cy="30%"
-            rx="15vw"
-            ry="25vh"
+            cx="10%"
+            cy="70%"
+            rx="20vw"
+            ry="15vh"
             fill="url(#gradient1)"
           />
           <ellipse
             {...stylex.props(styles.ellipse, styles.animationTwo)}
-            cx="75%"
-            cy="80%"
-            rx="25vw"
+            cx="35%"
+            cy="65%"
+            rx="15vw"
             ry="15vh"
             fill="url(#gradient2)"
           />
           <ellipse
             {...stylex.props(styles.ellipse, styles.animationThree)}
-            cx="30%"
-            cy="90%"
-            rx="20vw"
-            ry="30vh"
+            cx="55%"
+            cy="70%"
+            rx="10vw"
+            ry="10vh"
             fill="url(#gradient3)"
           />
           <ellipse
             {...stylex.props(styles.ellipse, styles.animationFour)}
-            cx="70%"
-            cy="30%"
-            rx="30vw"
-            ry="20vh"
-            fill="url(#gradient4)"
-          />
-          <ellipse
-            {...stylex.props(styles.ellipse, styles.animationFour)}
-            cx="50%"
-            cy="50%"
-            rx="30vw"
-            ry="20vh"
+            cx="80%"
+            cy="55%"
+            rx="20vw"
+            ry="15vh"
             fill="url(#gradient4)"
           />
         </g>
