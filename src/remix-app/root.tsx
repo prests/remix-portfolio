@@ -9,7 +9,38 @@ import SettingsMenu from './components/settings/SettingsMenu';
 import ThemeProvider from './themes/ThemeProvider';
 import { isThemeMode } from './themes/theme-helpers';
 
-import type { LoaderFunctionArgs } from '@remix-run/node';
+import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
+
+const links: LinksFunction = () => [
+  {
+    rel: 'preconnect',
+    href: 'https://fonts.googleapis.com',
+  },
+  {
+    rel: 'prelaod',
+    href: 'https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2',
+    as: 'font',
+    type: 'font/woff2',
+  },
+  {
+    rel: 'prelaod',
+    href: 'https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXiWtFCc.woff2',
+    as: 'font',
+    type: 'font/woff2',
+  },
+  {
+    rel: 'prelaod',
+    href: 'https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh50XSwiPGQ3q5d0.woff2',
+    as: 'font',
+    type: 'font/woff2',
+  },
+  {
+    rel: 'prelaod',
+    href: 'https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh7USSwiPGQ3q5d0.woff2',
+    as: 'font',
+    type: 'font/woff2',
+  },
+];
 
 const loader = async ({ request }: LoaderFunctionArgs) => {
   const cookieHeader = request.headers.get('Cookie') ?? '';
@@ -40,4 +71,4 @@ const App = () => {
 };
 
 export default App;
-export { loader };
+export { links, loader };
