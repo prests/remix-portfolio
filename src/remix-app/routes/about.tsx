@@ -10,6 +10,10 @@ import { size } from '../themes/typography.stylex';
 import type { MetaFunction } from '@remix-run/node';
 import type { PropsWithChildren } from 'react';
 
+interface TechnologyElementProps extends PropsWithChildren {
+  group: string;
+}
+
 const meta: MetaFunction = () => [
   { title: 'About Shayne Preston - Software Engineer & Web Developer' },
   {
@@ -93,40 +97,37 @@ const AboutRoute = () => (
         </Heading>
 
         <Text as="p" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.text}>
-          Hey! My name is Shayne, I'm a Software Engineer, and I am obsessed with the web. My passion for web
-          development began in high school where I took an Introduction to Programming class. Through that class I
-          learned about HTML and CSS. I loved the creativity and possibilities that a webpage could bring.
+          I’m a Software Engineer with a passion for crafting seamless, intuitive, and secure web experiences. My
+          obsession with the web drives me to tackle complex challenges and deliver creative, user-centered solutions.
+          Whether it’s designing pixel-perfect interfaces or architecting robust backend systems, I thrive at the
+          intersection of innovation and practicality.
         </Text>
 
         <Text as="p" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.text}>
-          With that taste of programming I decided to pursue a degree in Computer and Systems Engineering at Rensselaer
-          Polytechnic Institute. I used my time there to explore different aspects of computer engineering from computer
-          architecture in classes, to mobile app development in RCOS.
+          I take pride in my full-stack technical expertise, adhering to strong standards and prioritizing application
+          security over fleeting framework trends. My goal is to create scalable, maintainable, and future-proof
+          applications that make a meaningful impact. I’m particularly passionate about enhancing user experiences,
+          ensuring every interaction feels effortless and engaging.
         </Text>
 
         <Text as="p" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.text}>
-          These days I'm working on web based applications both on the frontend and on the backend at DraftKings. These
-          apps cater to hundreds of thousands of users daily and are a cornerstone to DraftKings' financial platform.
-        </Text>
-
-        <Text as="p" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.text}>
-          Outside of engineering I have many hobbies. Music has always been a big part of my life, and when Covid-19
-          kept everyone locked indoors, I decided to teach myself how to play the guitar. I also love being outdoors! In
-          the summer you can catch me outside camping or at the beach, and in the winter you'll find me skiing with
-          friends and family.
+          Beyond engineering, I’m a firm believer in pursuing a balanced and fulfilling life. Music is one of my
+          greatest passions—you'll always find exploring new sounds or revisiting classics. I’m also an outdoor
+          enthusiast who finds inspiration in nature. In the summer, you’ll often find me camping under the stars or
+          relaxing at the beach, and in the winter, I’m carving down ski slopes with friends and family.
         </Text>
 
         <div>
           <Text as="p" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.text}>
-            Technologies I'm currently working with:
+            Technologies I'm Currently Working With:
           </Text>
 
           <ul {...stylex.props(styles.technologies)}>
-            <TechnologyElement>Javascript/Typescript</TechnologyElement>
-            <TechnologyElement>Node, Express, Fastify, Hono</TechnologyElement>
-            <TechnologyElement>React and Remix</TechnologyElement>
-            <TechnologyElement>Vite, Vitest, Jest, Playwright</TechnologyElement>
-            <TechnologyElement>Golang</TechnologyElement>
+            <TechnologyElement group="Languages/Frameworks">
+              Javascript/Typescript, Golang, React, Remix
+            </TechnologyElement>
+            <TechnologyElement group="Backend Frameworks">Node.js, Express, Fastify, Hono</TechnologyElement>
+            <TechnologyElement group="Tools/Testing">Vite, Vitest, Jest, Playwright, Cypress</TechnologyElement>
           </ul>
         </div>
       </div>
@@ -134,9 +135,13 @@ const AboutRoute = () => (
   </main>
 );
 
-const TechnologyElement = ({ children }: PropsWithChildren) => (
+const TechnologyElement = ({ group, children }: TechnologyElementProps) => (
   <li {...stylex.props(styles.technology)}>
     <Text as="span" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.technologyText}>
+      <Text as="span" size={5} weight="bold" wrap="pretty" truncate={false}>
+        {group}
+        {': '}
+      </Text>
       {children}
     </Text>
   </li>
