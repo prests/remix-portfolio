@@ -19,8 +19,8 @@ const stroke = stylex.keyframes({
 const styles = stylex.create({
   base: {
     [logoVars.lineColor]: {
-      default: tokens.color_action_background_fill,
-      ':hover': tokens.color_action_text,
+      default: tokens.color_base_page_logo,
+      ':hover': tokens.color_base_page_logo_hover,
     },
   },
   line: {

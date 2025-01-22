@@ -73,10 +73,6 @@ const styles = stylex.create({
       default: 'auto',
       [lg]: spacing.s9,
     },
-    transform: {
-      default: 'none',
-      [lg]: 'rotate(-5deg)',
-    },
   },
 });
 
