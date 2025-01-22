@@ -13,8 +13,9 @@ import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 
 const links: LinksFunction = () => [
   {
-    rel: 'preconnect',
-    href: 'https://fonts.googleapis.com',
+    rel: 'preload',
+    href: 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap',
+    as: 'style',
   },
   {
     rel: 'prelaod',
