@@ -40,7 +40,7 @@ const SettingsMenu = () => {
 
       <Dialog open={isOpen} onOpenChange={setIsOpen} modal>
         <DialogTrigger asChild>
-          <Button variant="ghost" styleOverride={styles.settingsButton}>
+          <Button variant="ghost" styleOverride={styles.settingsButton} aria-label="open settings menu">
             <SettingsIcon style={styles.settingsIcon} />
           </Button>
         </DialogTrigger>
