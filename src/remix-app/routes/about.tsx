@@ -62,6 +62,8 @@ const styles = stylex.create({
   },
   image: {
     objectFit: 'cover',
+    width: 'min(100%, 500px)',
+    height: 'min(100%, 500px)',
     borderRadius: rounded.md,
     marginLeft: {
       default: 'auto',
@@ -83,11 +85,10 @@ const AboutRoute = () => (
     <section {...stylex.props(styles.section)}>
       <img
         {...stylex.props(styles.image)}
-        src="/me.JPG"
+        srcSet="me-400w.webp 400w, me-600w.webp 600w, me-800w.webp 800w, me-1000w.webp 1000w, me-1200w.webp 1200w, me-1600w.webp 1600w, me-2000w.webp 2000w"
+        sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (max-width: 1000px) 1000px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (min-width: 1601px) 2000px"
+        src="me.JPG"
         alt="Shayne Preston, a Software Engineer"
-        width="500px"
-        height="500px"
-        loading="eager"
       />
 
       <div {...stylex.props(styles.aboutContent)}>
