@@ -52,6 +52,9 @@ const styles = stylex.create({
   text: {
     color: tokens.color_text_base,
   },
+  technologiesHeader: {
+    color: tokens.color_text_flare,
+  },
   technologies: {
     color: tokens.color_text_base,
     listStylePosition: 'inside',
@@ -63,6 +66,9 @@ const styles = stylex.create({
   },
   technologyText: {
     paddingLeft: spacing.s2,
+  },
+  technologyGroupName: {
+    color: tokens.color_text_flare,
   },
   image: {
     objectFit: 'cover',
@@ -118,7 +124,7 @@ const AboutRoute = () => (
         </Text>
 
         <div>
-          <Text as="p" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.text}>
+          <Text as="p" size={5} weight="bold" wrap="pretty" truncate={false} style={styles.technologiesHeader}>
             Technologies I'm Currently Working With:
           </Text>
 
@@ -138,7 +144,7 @@ const AboutRoute = () => (
 const TechnologyElement = ({ group, children }: TechnologyElementProps) => (
   <li {...stylex.props(styles.technology)}>
     <Text as="span" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.technologyText}>
-      <Text as="span" size={5} weight="bold" wrap="pretty" truncate={false}>
+      <Text as="span" size={5} weight="bold" wrap="pretty" truncate={false} style={styles.technologyGroupName}>
         {group}
         {': '}
       </Text>
