@@ -24,6 +24,7 @@ const styles = stylex.create({
   },
   companyLink: {
     color: tokens.color_text_brand,
+    textWrap: 'nowrap',
     background: `none, linear-gradient(to right, ${tokens.color_text_brand}, ${tokens.color_text_brand})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '100% 100%, 0 100%',
@@ -48,7 +49,7 @@ const Experience = ({ position, company, range, children }: ExperienceProps) => 
       </Link>
     </Heading>
 
-    <Text as="p" size={4} weight="light" wrap="nowrap" truncate={false} style={styles.range}>
+    <Text as="p" size={4} weight="light" wrap="pretty" truncate={false} style={styles.range}>
       {range}
     </Text>
 
