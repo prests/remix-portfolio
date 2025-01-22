@@ -87,10 +87,10 @@ const styles = stylex.create({
     },
   },
   tabsContent: {
-    borderTop: { default: 'none', [sm]: `solid 1px ${tokens.color_text_base}` },
-    borderLeft: { default: `solid 1px ${tokens.color_text_base}`, [sm]: 'none' },
-    paddingTop: { default: 'none', [sm]: spacing.s2 },
-    paddingLeft: { default: spacing.s2, [sm]: 'none' },
+    borderTop: { default: `solid 1px ${tokens.color_text_base}`, [sm]: `none` },
+    borderLeft: { default: 'none', [sm]: `solid 1px ${tokens.color_text_base}` },
+    paddingTop: { default: spacing.s2, [sm]: 'none' },
+    paddingLeft: { default: 'none', [sm]: spacing.s2 },
     marginTop: spacing.s1,
     outline: '3px solid transparent',
     boxShadow: {
