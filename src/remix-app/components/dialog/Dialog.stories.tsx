@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   tags: ['!autodocs'],
-  render: () => {
+  render: function Render() {
     const [container, setContainer] = useState<HTMLElement | null>(null);
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export const Default: Story = {
 };
 
 export const ForceFullscreen: Story = {
-  render: () => {
+  render: function Render() {
     const [container, setContainer] = useState<HTMLElement | null>(null);
 
     useEffect(() => {
@@ -79,7 +79,7 @@ export const ForceFullscreen: Story = {
 };
 
 export const CustomCloseButton: Story = {
-  render: () => {
+  render: function Render() {
     const [container, setContainer] = useState<HTMLElement | null>(null);
 
     useEffect(() => {

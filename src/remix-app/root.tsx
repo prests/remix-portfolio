@@ -1,3 +1,4 @@
+import * as stylex from '@stylexjs/stylex';
 import { parse } from 'cookie';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from 'react-router';
 
@@ -66,6 +67,14 @@ const loader = async ({ request }: LoaderFunctionArgs) => {
   };
 };
 
+const styles = stylex.create({
+  body: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+  },
+});
+
 const Layout = ({ children }: PropsWithChildren) => {
   const nonce = useNonce();
 
@@ -78,7 +87,7 @@ const Layout = ({ children }: PropsWithChildren) => {
         <Links />
       </head>
 
-      <body>
+      <body {...stylex.props(styles.body)}>
         {children}
 
         <ScrollRestoration nonce={nonce} />

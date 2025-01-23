@@ -49,7 +49,7 @@ const SettingsMenu = () => {
           <DialogHeader>
             <DialogTitle style={[styles.formTitle, typographyStyles[5], weightStyles.black]}>Settings</DialogTitle>{' '}
             <DialogDescription style={[styles.formDescription, typographyStyles[3], weightStyles.light]}>
-              Update your personal settings. Click "Apply Changes" when you're done.
+              Update your personal settings. Click &quot;Apply Changes&quot; when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
 

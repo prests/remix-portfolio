@@ -11,10 +11,6 @@ import { logger } from './logger.server.js';
 
 import type { AppLoadContext, ServerBuild } from 'react-router';
 
-declare module 'react-router' {
-  interface AppLoadContext {}
-}
-
 interface Variables {
   secureHeadersNonce: string;
 }

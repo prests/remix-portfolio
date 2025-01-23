@@ -13,14 +13,12 @@ import {
 import type { TypographyProps } from '../typography.types';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 
-interface TextBaseProps extends TypographyProps<'span' | 'div' | 'label' | 'p'> {}
-
 type SpanProps = { as?: 'span' } & Omit<ComponentPropsWithoutRef<'span'>, 'style'>;
 type DivProps = { as?: 'div' } & Omit<ComponentPropsWithoutRef<'div'>, 'style'>;
 type LabelProps = { as?: 'label' } & Omit<ComponentPropsWithoutRef<'label'>, 'style'>;
 type PProps = { as?: 'p' } & Omit<ComponentPropsWithoutRef<'p'>, 'style'>;
 
-type TextProps = TextBaseProps & (SpanProps | DivProps | LabelProps | PProps);
+type TextProps = TypographyProps<'span' | 'div' | 'label' | 'p'> & (SpanProps | DivProps | LabelProps | PProps);
 
 const Text = forwardRef<ElementRef<'span'>, TextProps>(
   ({ align, as: Tag, asChild, children, size, style, truncate, weight, wrap, ...props }, forwardedRef) => (

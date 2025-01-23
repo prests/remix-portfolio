@@ -48,6 +48,7 @@ const styles = stylex.create({
 
 const removeLettersFromString = (input: string) => input.replace(/[a-zA-Z]/g, '');
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 const mapColorsToElements = <T extends stylex.VarGroup<{}>>(title: string, colors: T, shouldRemoveLetters = true) => {
   const Colors = Object.entries(colors)
     .filter(([key]) => !excludedKeys.includes(key))
@@ -66,6 +67,7 @@ const mapColorsToElements = <T extends stylex.VarGroup<{}>>(title: string, color
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 const mapSpacingToElements = <T extends stylex.VarGroup<{}>>(spacings: T, style: stylex.StyleXStyles) =>
   Object.entries(spacings)
     .filter(([key]) => !excludedKeys.includes(key))

@@ -68,7 +68,7 @@ const styles = stylex.create({
 });
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'fill', asChild = false, styleOverride, ...props }, ref) => {
+  ({ variant = 'fill', asChild = false, styleOverride, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
     return <Comp {...props} ref={ref} {...stylex.props(styles.base, styles[variant], styleOverride)} />;
   }

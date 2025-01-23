@@ -94,7 +94,8 @@ const RootIndexRoute = () => (
         truncate={false}
         style={[styles.description, styles.contactDescription]}
       >
-        Want to get in touch with me? Shoot me an email and I'll do my best to get back to you as quickly as possible!
+        Want to get in touch with me? Shoot me an email and I&apos;ll do my best to get back to you as quickly as
+        possible!
       </Text>
 
       <Button variant="outline" styleOverride={[typographyStyles[6], styles.contactButton]}>

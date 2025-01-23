@@ -21,8 +21,8 @@ const FactSetExperience = () => (
           truncate={false}
           style={experienceStyles.listElementText}
         >
-          Created and maintained core applications for FactSet's Research Business Unit. These apps provided real-time
-          news, events, and signals to both Buy Side and Sell Side clients.
+          Created and maintained core applications for FactSet&apos;s Research Business Unit. These apps provided
+          real-time news, events, and signals to both Buy Side and Sell Side clients.
         </Text>
       </li>
 

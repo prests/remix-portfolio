@@ -118,14 +118,14 @@ const AboutRoute = () => (
 
         <Text as="p" size={5} weight="regular" wrap="pretty" truncate={false} style={styles.text}>
           Beyond engineering, I’m a firm believer in pursuing a balanced and fulfilling life. Music is one of my
-          greatest passions—you'll always find exploring new sounds or revisiting classics. I’m also an outdoor
+          greatest passions—you&apos;ll always find exploring new sounds or revisiting classics. I’m also an outdoor
           enthusiast who finds inspiration in nature. In the summer, you’ll often find me camping under the stars or
           relaxing at the beach, and in the winter, I’m carving down ski slopes with friends and family.
         </Text>
 
         <div>
           <Text as="p" size={5} weight="bold" wrap="pretty" truncate={false} style={styles.technologiesHeader}>
-            Technologies I'm Currently Working With:
+            Technologies I&apos;m Currently Working With:
           </Text>
 
           <ul {...stylex.props(styles.technologies)}>
