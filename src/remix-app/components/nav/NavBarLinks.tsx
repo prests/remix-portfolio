@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react';
+import { Link } from 'react-router';
 
 import { typographyStyles, weightStyles } from '../../themes/typography.stylex';
 import Button from '../button/Button';

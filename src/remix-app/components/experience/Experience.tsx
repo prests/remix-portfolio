@@ -1,5 +1,5 @@
-import { Link } from '@remix-run/react';
 import * as stylex from '@stylexjs/stylex';
+import { Link } from 'react-router';
 
 import { tokens } from '../../themes/tokens.stylex';
 import Heading from '../typography/heading/Heading';

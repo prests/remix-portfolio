@@ -14,6 +14,6 @@ const viteDevServer = IS_PRODUCTION_MODE
  * Load the dev server build
  * @returns The server build
  */
-const getDevBuild = async () => viteDevServer?.ssrLoadModule('virtual:remix/server-build');
+const getDevBuild = async () => viteDevServer?.ssrLoadModule('virtual:react-router/server-build');
 
 export { getDevBuild };

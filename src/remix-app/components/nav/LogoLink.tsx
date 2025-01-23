@@ -1,5 +1,5 @@
-import { Link } from '@remix-run/react';
 import * as stylex from '@stylexjs/stylex';
+import { Link } from 'react-router';
 
 import Logo from '../../assets/icons/Logo/Logo';
 

@@ -7,8 +7,8 @@ import { spacing } from '../themes/spacing.stylex';
 import { tokens } from '../themes/tokens.stylex';
 import { size } from '../themes/typography.stylex';
 
-import type { MetaFunction } from '@remix-run/node';
 import type { PropsWithChildren } from 'react';
+import type { MetaFunction } from 'react-router';
 
 interface TechnologyElementProps extends PropsWithChildren {
   group: string;

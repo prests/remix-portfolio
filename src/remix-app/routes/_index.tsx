@@ -7,7 +7,7 @@ import { spacing } from '../themes/spacing.stylex';
 import { tokens } from '../themes/tokens.stylex';
 import { typographyStyles } from '../themes/typography.stylex';
 
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from 'react-router';
 
 const meta: MetaFunction = () => [
   { title: 'Shayne Preston - Software Engineer & Web Developer' },

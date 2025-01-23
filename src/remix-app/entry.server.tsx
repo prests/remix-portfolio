@@ -1,50 +1,38 @@
 import { PassThrough } from 'node:stream';
 
-import { createReadableStreamFromReadable } from '@remix-run/node';
-import { RemixServer } from '@remix-run/react';
+import { createReadableStreamFromReadable } from '@react-router/node';
 import { isbot } from 'isbot';
 import { renderToPipeableStream } from 'react-dom/server';
-import { renderHeadToString } from 'remix-island';
+import { ServerRouter } from 'react-router';
 
-import { Head } from './Document';
 import NonceProvider from './hooks/nonce';
-import stylexStylesheet from './main.css?url';
 
-import type { AppLoadContext, EntryContext } from '@remix-run/node';
+import type { RenderToPipeableStreamOptions } from 'react-dom/server';
+import type { AppLoadContext, EntryContext } from 'react-router';
 
-const CLOSING_HTML = '</div></body></html>' as const;
-
-const generateOpeningHTML = (nonce: string, headStr: string) =>
-  `<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8" nonce="${nonce}" /><link rel="preload" href="${stylexStylesheet}" as="style" /><link rel="stylesheet" href="${stylexStylesheet}" />${headStr}</head><body><div id="root">`;
-
-const handleRequest = (
+export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext,
+  routerContext: EntryContext,
   loadContext: AppLoadContext
-) =>
-  isbot(request.headers.get('user-agent') ?? '')
-    ? handleBotRequest(request, responseStatusCode, responseHeaders, remixContext, loadContext)
-    : handleBrowserRequest(request, responseStatusCode, responseHeaders, remixContext, loadContext);
-
-const handleBotRequest = (
-  request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers,
-  remixContext: EntryContext,
-  loadContext: AppLoadContext
-) =>
-  new Promise((resolve, reject) => {
+) {
+  return new Promise((resolve, reject) => {
     let shellRendered = false;
+    let userAgent = request.headers.get('user-agent');
+
+    // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
+    // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
+    let readyOption: keyof RenderToPipeableStreamOptions =
+      (userAgent && isbot(userAgent)) || routerContext.isSpaMode ? 'onAllReady' : 'onShellReady';
+
     const { pipe, abort } = renderToPipeableStream(
       <NonceProvider value={loadContext.nonce}>
-        <RemixServer context={remixContext} url={request.url} abortDelay={loadContext.env.ABORT_DELAY} />
+        <ServerRouter context={routerContext} url={request.url} nonce={loadContext.nonce} />
       </NonceProvider>,
       {
-        onAllReady() {
+        [readyOption]() {
           shellRendered = true;
-          const headStr = renderHeadToString({ request, remixContext, Head });
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
 
@@ -57,9 +45,7 @@ const handleBotRequest = (
             })
           );
 
-          body.write(generateOpeningHTML(loadContext.nonce, headStr));
           pipe(body);
-          body.write(CLOSING_HTML);
         },
         onShellError(error: unknown) {
           reject(error);
@@ -73,61 +59,10 @@ const handleBotRequest = (
             console.error(error);
           }
         },
+        nonce: loadContext.nonce,
       }
     );
 
     setTimeout(abort, loadContext.env.ABORT_DELAY);
   });
-
-const handleBrowserRequest = (
-  request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers,
-  remixContext: EntryContext,
-  loadContext: AppLoadContext
-) =>
-  new Promise((resolve, reject) => {
-    let shellRendered = false;
-    const { pipe, abort } = renderToPipeableStream(
-      <NonceProvider value={loadContext.nonce}>
-        <RemixServer context={remixContext} url={request.url} abortDelay={loadContext.env.ABORT_DELAY} />
-      </NonceProvider>,
-      {
-        onShellReady() {
-          shellRendered = true;
-          const headStr = renderHeadToString({ request, remixContext, Head });
-          const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
-
-          responseHeaders.set('Content-Type', 'text/html');
-
-          resolve(
-            new Response(stream, {
-              headers: responseHeaders,
-              status: responseStatusCode,
-            })
-          );
-
-          body.write(generateOpeningHTML(loadContext.nonce, headStr));
-          pipe(body);
-          body.write(CLOSING_HTML);
-        },
-        onShellError(error: unknown) {
-          reject(error);
-        },
-        onError(error: unknown) {
-          responseStatusCode = 500;
-          // Log streaming rendering errors from inside the shell.  Don't log
-          // errors encountered during initial shell rendering since they'll
-          // reject and get logged in handleDocumentRequest.
-          if (shellRendered) {
-            console.error(error);
-          }
-        },
-      }
-    );
-
-    setTimeout(abort, loadContext.env.ABORT_DELAY);
-  });
-
-export default handleRequest;
+}
