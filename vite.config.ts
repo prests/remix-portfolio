@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 
 import devServer, { defaultOptions } from '@hono/vite-dev-server';
-import { vitePlugin as remix } from '@remix-run/dev';
+import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
 import styleX from 'vite-plugin-stylex';
 import { configDefaults } from 'vitest/config';
@@ -34,11 +34,7 @@ export default defineConfig({
         /\?import$/,
       ],
     }),
-    !process.env.VITEST &&
-      remix({
-        appDirectory: 'src/remix-app',
-        serverModuleFormat: 'esm',
-      }),
+    !process.env.VITEST && reactRouter(),
     // @FIXME - Hit some strange type errors with this plugin, but seems to work fine
     // @ts-ignore
     styleX(),

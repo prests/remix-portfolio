@@ -1,4 +1,4 @@
-import type { AppLoadContext } from '@remix-run/node';
+import type { AppLoadContext } from 'react-router';
 
 const MOCK_APP_LOAD_CONTEXT: AppLoadContext = {
   appVersion: '1',

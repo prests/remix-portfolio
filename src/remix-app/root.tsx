@@ -1,17 +1,28 @@
-import { Outlet, useLoaderData } from '@remix-run/react';
 import { parse } from 'cookie';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from 'react-router';
 
-import { Document } from './Document';
 import AuroraBackground from './components/background/AuroraBackground';
 import Footer from './components/footer/Footer';
 import NavBar from './components/nav/Navbar';
 import SettingsMenu from './components/settings/SettingsMenu';
+import { useNonce } from './hooks/nonce';
+import stylexStylesheet from './main.css?url';
 import ThemeProvider from './themes/ThemeProvider';
 import { isThemeMode } from './themes/theme-helpers';
 
-import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
+import type { PropsWithChildren } from 'react';
+import type { LinksFunction, LoaderFunctionArgs } from 'react-router';
 
 const links: LinksFunction = () => [
+  {
+    rel: 'preload',
+    href: stylexStylesheet,
+    as: 'style',
+  },
+  {
+    rel: 'stylesheet',
+    href: stylexStylesheet,
+  },
   {
     rel: 'preload',
     href: 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap',
@@ -55,21 +66,41 @@ const loader = async ({ request }: LoaderFunctionArgs) => {
   };
 };
 
+const Layout = ({ children }: PropsWithChildren) => {
+  const nonce = useNonce();
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" nonce={nonce} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+
+      <body>
+        {children}
+
+        <ScrollRestoration nonce={nonce} />
+        <Scripts nonce={nonce} />
+      </body>
+    </html>
+  );
+};
+
 const App = () => {
   const { mode } = useLoaderData<typeof loader>();
 
   return (
-    <Document>
-      <ThemeProvider mode={mode}>
-        <AuroraBackground />
-        <SettingsMenu />
-        <NavBar />
-        <Outlet />
-        <Footer />
-      </ThemeProvider>
-    </Document>
+    <ThemeProvider mode={mode}>
+      <AuroraBackground />
+      <SettingsMenu />
+      <NavBar />
+      <Outlet />
+      <Footer />
+    </ThemeProvider>
   );
 };
 
 export default App;
-export { links, loader };
+export { Layout, links, loader };

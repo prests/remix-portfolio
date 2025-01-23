@@ -1,40 +1,27 @@
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
-import { installGlobals } from '@remix-run/node';
 import { Hono } from 'hono';
 import { NONCE, secureHeaders } from 'hono/secure-headers';
-import { remix } from 'remix-hono/handler';
+import { reactRouter } from 'remix-hono/handler';
 
 import { IS_PRODUCTION_MODE, MODE } from './constants/server.js';
 import { getDevBuild } from './dev.server.js';
 import { getEnv } from './env.server.js';
 import { logger } from './logger.server.js';
 
-import type { Env } from './env.server.js';
-import type { AppLoadContext, ServerBuild } from '@remix-run/node';
+import type { AppLoadContext, ServerBuild } from 'react-router';
 
-declare module '@remix-run/node' {
-  interface AppLoadContext {
-    /**
-     * The app version from the build assets
-     */
-    readonly appVersion: string;
-    /**
-     * Content Security Policy's nonce
-     */
-    readonly nonce: string;
-    /**
-     * Injected Application Environmental Variables
-     */
-    readonly env: Env;
-  }
+declare module 'react-router' {
+  interface AppLoadContext {}
 }
 
-installGlobals();
+interface Variables {
+  secureHeadersNonce: string;
+}
 
 const env = getEnv();
 
-const app = new Hono();
+const app = new Hono<{ Variables: Variables }>();
 
 app.use('*', logger(env.npm_package_version));
 
@@ -83,7 +70,7 @@ app.use(async (c, next) => {
       await import('../server/index.js')
     : await getDevBuild()) as unknown as ServerBuild;
 
-  return remix({
+  return reactRouter({
     build,
     mode: MODE,
     getLoadContext() {

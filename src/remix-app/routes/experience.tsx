@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/tabs/Tab
 import { spacing } from '../themes/spacing.stylex';
 import { size, weights } from '../themes/typography.stylex';
 
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from 'react-router';
 
 const FACTSET_TAB_KEY = 'factset' as const;
 const DRAFTKINGS_TAB_KEY = 'draftkings' as const;
@@ -35,7 +35,6 @@ const styles = stylex.create({
     display: 'flex',
     flexDirection: { default: 'column', [sm]: 'row' },
     width: `min(100%, 800px)`,
-    flexShink: 1,
     padding: { default: `0 ${spacing.s2}`, [sm]: `0 ${spacing.s6}` },
   },
   tabListContainer: {
